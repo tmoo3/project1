@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      template="./common/template.xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="WarehouseEditDlg" widgetVar="WarehouseEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditWarehouseTitle}">
+            <h:form id="WarehouseEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{warehouseController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditWarehouseLabel_warehouseid}" for="warehouseid" />
+                        <p:inputText id="warehouseid" value="#{warehouseController.selected.warehouseid}" title="#{bundle.EditWarehouseTitle_warehouseid}" required="true" requiredMessage="#{bundle.EditWarehouseRequiredMessage_warehouseid}"/>
+                        <p:outputLabel value="#{bundle.EditWarehouseLabel_address}" for="address" />
+                        <p:inputText id="address" value="#{warehouseController.selected.address}" title="#{bundle.EditWarehouseTitle_address}" />
+                        <p:outputLabel value="#{bundle.EditWarehouseLabel_phone}" for="phone" />
+                        <p:inputText id="phone" value="#{warehouseController.selected.phone}" title="#{bundle.EditWarehouseTitle_phone}" />
+                        <p:outputLabel value="#{bundle.EditWarehouseLabel_volume}" for="volume" />
+                        <p:inputText id="volume" value="#{warehouseController.selected.volume}" title="#{bundle.EditWarehouseTitle_volume}" />
+                        <p:outputLabel value="#{bundle.EditWarehouseLabel_zip}" for="zip" />
+                        <p:inputText id="zip" value="#{warehouseController.selected.zip}" title="#{bundle.EditWarehouseTitle_zip}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{warehouseController.update}" value="#{bundle.Save}" update="display,:WarehouseListForm:datalist,:growl" oncomplete="handleSubmit(args, 'WarehouseEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="WarehouseEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

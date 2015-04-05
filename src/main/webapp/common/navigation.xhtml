@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+
+        <title><ui:insert name="title"></ui:insert></title>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>       
+        <h:outputStylesheet library="css" name="default.css"/>
+        <h:outputStylesheet library="css" name="theme.css"/> 
+
+    </h:head>
+
+    <h:body>
+        <h:form>
+
+            <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="../faces/main.xhtml">Bungalow park</a>
+                    </div>
+                    <!-- A command-action must always be in a form, it also updates all the data in the form.-->
+                    <div id="navbar" class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav navbar-right">
+                            <!-- Hide all the links if the user has not logged in! -->
+                            <ui:fragment rendered="${sessionDto.userDto.loggedIn}"> 
+                                <li><a href="/BungalowParc/materialmanagement.xhtml">MaterialManagement</a></li>                                
+                                <li><a href="/BungalowParc/customer.xhtml">Customers</a></li>
+                                <li><a href="/BungalowParc/park.xhtml">Parks</a></li>
+                                <li><a href="#">Admin</a>
+                                    <ul>
+                                        <li><a href="./faces/users/List.xhtml">Users</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <!-- This is true for all pages implementing the template, so we did not have a specific controller for the template.--> 
+                                    <h:commandLink action="${login.logout()}">Logout</h:commandLink>
+                                </li>
+                            </ui:fragment>
+                            <ui:fragment rendered="${!sessionDto.userDto.loggedIn}">
+                                <li><a href="./faces/login.xhtml">Login</a></li>
+                            </ui:fragment>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </h:form>
+
+        <div class="jumbotron">
+            <div class="container">
+                <ui:insert name="navbar"></ui:insert>
+            </div>
+        </div>
+
+        <div class="container">
+            <ui:insert name="content" id="maincontent"></ui:insert>
+        </div>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+    </h:body>
+
+</html>

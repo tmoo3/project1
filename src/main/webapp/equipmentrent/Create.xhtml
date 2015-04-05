@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      template="./common/template.xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EquipmentrentCreateDlg" widgetVar="EquipmentrentCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateEquipmentrentTitle}">
+            <h:form id="EquipmentrentCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{equipmentrentController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateEquipmentrentLabel_equipmentrentid}" for="equipmentrentid" />
+                        <p:inputText id="equipmentrentid" value="#{equipmentrentController.selected.equipmentrentid}" title="#{bundle.CreateEquipmentrentTitle_equipmentrentid}" required="true" requiredMessage="#{bundle.CreateEquipmentrentRequiredMessage_equipmentrentid}"/>
+                        <p:outputLabel value="#{bundle.CreateEquipmentrentLabel_durationperminute}" for="durationperminute" />
+                        <p:inputText id="durationperminute" value="#{equipmentrentController.selected.durationperminute}" title="#{bundle.CreateEquipmentrentTitle_durationperminute}" />
+                        <p:outputLabel value="#{bundle.CreateEquipmentrentLabel_startdate}" for="startdate" />
+                        <p:calendar id="startdate" pattern="MM/dd/yyyy" value="#{equipmentrentController.selected.startdate}" title="#{bundle.EditEquipmentrentTitle_startdate}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateEquipmentrentLabel_starttime}" for="starttime" />
+                        <p:calendar id="starttime" pattern="HH:mm:ss" value="#{equipmentrentController.selected.starttime}" title="#{bundle.EditEquipmentrentTitle_starttime}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateEquipmentrentLabel_state}" for="state" />
+                        <p:inputText id="state" value="#{equipmentrentController.selected.state}" title="#{bundle.CreateEquipmentrentTitle_state}" />
+                        <p:outputLabel value="#{bundle.CreateEquipmentrentLabel_total}" for="total" />
+                        <p:inputText id="total" value="#{equipmentrentController.selected.total}" title="#{bundle.CreateEquipmentrentTitle_total}" />
+                        <p:outputLabel value="#{bundle.CreateEquipmentrentLabel_reservationid}" for="reservationid" />
+                        <p:selectOneMenu id="reservationid" value="#{equipmentrentController.selected.reservationid}" >
+                            <f:selectItems value="#{reservationController.itemsAvailableSelectOne}"
+                                           var="reservationidItem"
+                                           itemValue="#{reservationidItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateEquipmentrentLabel_materialid}" for="materialid" />
+                        <p:selectOneMenu id="materialid" value="#{equipmentrentController.selected.materialid}" >
+                            <f:selectItems value="#{materialController.itemsAvailableSelectOne}"
+                                           var="materialidItem"
+                                           itemValue="#{materialidItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{equipmentrentController.create}" value="#{bundle.Save}" update="display,:EquipmentrentListForm:datalist,:growl" oncomplete="handleSubmit(args,'EquipmentrentCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="EquipmentrentCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      template="./common/template.xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EquipmentrentViewDlg" widgetVar="EquipmentrentViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewEquipmentrentTitle}">
+            <h:form id="EquipmentrentViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{equipmentrentController.selected != null}">
+                        <h:outputText value="#{bundle.ViewEquipmentrentLabel_equipmentrentid}"/>
+                        <h:outputText value="#{equipmentrentController.selected.equipmentrentid}" title="#{bundle.ViewEquipmentrentTitle_equipmentrentid}"/>
+                        <h:outputText value="#{bundle.ViewEquipmentrentLabel_durationperminute}"/>
+                        <h:outputText value="#{equipmentrentController.selected.durationperminute}" title="#{bundle.ViewEquipmentrentTitle_durationperminute}"/>
+                        <h:outputText value="#{bundle.ViewEquipmentrentLabel_startdate}"/>
+                        <h:outputText value="#{equipmentrentController.selected.startdate}" title="#{bundle.ViewEquipmentrentTitle_startdate}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewEquipmentrentLabel_starttime}"/>
+                        <h:outputText value="#{equipmentrentController.selected.starttime}" title="#{bundle.ViewEquipmentrentTitle_starttime}">
+                            <f:convertDateTime pattern="HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewEquipmentrentLabel_state}"/>
+                        <h:outputText value="#{equipmentrentController.selected.state}" title="#{bundle.ViewEquipmentrentTitle_state}"/>
+                        <h:outputText value="#{bundle.ViewEquipmentrentLabel_total}"/>
+                        <h:outputText value="#{equipmentrentController.selected.total}" title="#{bundle.ViewEquipmentrentTitle_total}"/>
+                        <h:outputText value="#{bundle.ViewEquipmentrentLabel_reservationid}"/>
+                        <h:outputText value="#{equipmentrentController.selected.reservationid}" title="#{bundle.ViewEquipmentrentTitle_reservationid}"/>
+                        <h:outputText value="#{bundle.ViewEquipmentrentLabel_materialid}"/>
+                        <h:outputText value="#{equipmentrentController.selected.materialid}" title="#{bundle.ViewEquipmentrentTitle_materialid}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="EquipmentrentViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

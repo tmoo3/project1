@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      template="./common/template.xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="SupplierEditDlg" widgetVar="SupplierEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditSupplierTitle}">
+            <h:form id="SupplierEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{supplierController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditSupplierLabel_supplierid}" for="supplierid" />
+                        <p:inputText id="supplierid" value="#{supplierController.selected.supplierid}" title="#{bundle.EditSupplierTitle_supplierid}" required="true" requiredMessage="#{bundle.EditSupplierRequiredMessage_supplierid}"/>
+                        <p:outputLabel value="#{bundle.EditSupplierLabel_address}" for="address" />
+                        <p:inputText id="address" value="#{supplierController.selected.address}" title="#{bundle.EditSupplierTitle_address}" />
+                        <p:outputLabel value="#{bundle.EditSupplierLabel_bedrijfsnaam}" for="bedrijfsnaam" />
+                        <p:inputText id="bedrijfsnaam" value="#{supplierController.selected.bedrijfsnaam}" title="#{bundle.EditSupplierTitle_bedrijfsnaam}" />
+                        <p:outputLabel value="#{bundle.EditSupplierLabel_contactpersoon}" for="contactpersoon" />
+                        <p:inputText id="contactpersoon" value="#{supplierController.selected.contactpersoon}" title="#{bundle.EditSupplierTitle_contactpersoon}" />
+                        <p:outputLabel value="#{bundle.EditSupplierLabel_phone}" for="phone" />
+                        <p:inputText id="phone" value="#{supplierController.selected.phone}" title="#{bundle.EditSupplierTitle_phone}" />
+                        <p:outputLabel value="#{bundle.EditSupplierLabel_zip}" for="zip" />
+                        <p:inputText id="zip" value="#{supplierController.selected.zip}" title="#{bundle.EditSupplierTitle_zip}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{supplierController.update}" value="#{bundle.Save}" update="display,:SupplierListForm:datalist,:growl" oncomplete="handleSubmit(args, 'SupplierEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="SupplierEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

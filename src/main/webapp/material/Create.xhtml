@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      template="./common/template.xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="MaterialCreateDlg" widgetVar="MaterialCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateMaterialTitle}">
+            <h:form id="MaterialCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{materialController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateMaterialLabel_materialid}" for="materialid" />
+                        <p:inputText id="materialid" value="#{materialController.selected.materialid}" title="#{bundle.CreateMaterialTitle_materialid}" required="true" requiredMessage="#{bundle.CreateMaterialRequiredMessage_materialid}"/>
+                        <p:outputLabel value="#{bundle.CreateMaterialLabel_mass}" for="mass" />
+                        <p:inputText id="mass" value="#{materialController.selected.mass}" title="#{bundle.CreateMaterialTitle_mass}" />
+                        <p:outputLabel value="#{bundle.CreateMaterialLabel_materialquality}" for="materialquality" />
+                        <p:inputText id="materialquality" value="#{materialController.selected.materialquality}" title="#{bundle.CreateMaterialTitle_materialquality}" />
+                        <p:outputLabel value="#{bundle.CreateMaterialLabel_materialquantity}" for="materialquantity" />
+                        <p:inputText id="materialquantity" value="#{materialController.selected.materialquantity}" title="#{bundle.CreateMaterialTitle_materialquantity}" />
+                        <p:outputLabel value="#{bundle.CreateMaterialLabel_materialtype}" for="materialtype" />
+                        <p:inputText id="materialtype" value="#{materialController.selected.materialtype}" title="#{bundle.CreateMaterialTitle_materialtype}" />
+                        <p:outputLabel value="#{bundle.CreateMaterialLabel_rentprice}" for="rentprice" />
+                        <p:inputText id="rentprice" value="#{materialController.selected.rentprice}" title="#{bundle.CreateMaterialTitle_rentprice}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{materialController.create}" value="#{bundle.Save}" update="display,:MaterialListForm:datalist,:growl" oncomplete="handleSubmit(args,'MaterialCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="MaterialCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

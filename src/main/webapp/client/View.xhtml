@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      template="./common/template.xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ClientViewDlg" widgetVar="ClientViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewClientTitle}">
+            <h:form id="ClientViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{clientController.selected != null}">
+                        <h:outputText value="#{bundle.ViewClientLabel_clientid}"/>
+                        <h:outputText value="#{clientController.selected.clientid}" title="#{bundle.ViewClientTitle_clientid}"/>
+                        <h:outputText value="#{bundle.ViewClientLabel_address}"/>
+                        <h:outputText value="#{clientController.selected.address}" title="#{bundle.ViewClientTitle_address}"/>
+                        <h:outputText value="#{bundle.ViewClientLabel_firstname}"/>
+                        <h:outputText value="#{clientController.selected.firstname}" title="#{bundle.ViewClientTitle_firstname}"/>
+                        <h:outputText value="#{bundle.ViewClientLabel_lastname}"/>
+                        <h:outputText value="#{clientController.selected.lastname}" title="#{bundle.ViewClientTitle_lastname}"/>
+                        <h:outputText value="#{bundle.ViewClientLabel_mobile}"/>
+                        <h:outputText value="#{clientController.selected.mobile}" title="#{bundle.ViewClientTitle_mobile}"/>
+                        <h:outputText value="#{bundle.ViewClientLabel_zip}"/>
+                        <h:outputText value="#{clientController.selected.zip}" title="#{bundle.ViewClientTitle_zip}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="ClientViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

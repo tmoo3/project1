@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      template="./common/template.xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="SetupCreateDlg" widgetVar="SetupCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateSetupTitle}">
+            <h:form id="SetupCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{setupController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateSetupLabel_setupid}" for="setupid" />
+                        <p:inputText id="setupid" value="#{setupController.selected.setupid}" title="#{bundle.CreateSetupTitle_setupid}" required="true" requiredMessage="#{bundle.CreateSetupRequiredMessage_setupid}"/>
+                        <p:outputLabel value="#{bundle.CreateSetupLabel_communication}" for="communication" />
+                        <p:inputText id="communication" value="#{setupController.selected.communication}" title="#{bundle.CreateSetupTitle_communication}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{setupController.create}" value="#{bundle.Save}" update="display,:SetupListForm:datalist,:growl" oncomplete="handleSubmit(args,'SetupCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="SetupCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

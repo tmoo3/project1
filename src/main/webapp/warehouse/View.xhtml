@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      template="./common/template.xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="WarehouseViewDlg" widgetVar="WarehouseViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewWarehouseTitle}">
+            <h:form id="WarehouseViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{warehouseController.selected != null}">
+                        <h:outputText value="#{bundle.ViewWarehouseLabel_warehouseid}"/>
+                        <h:outputText value="#{warehouseController.selected.warehouseid}" title="#{bundle.ViewWarehouseTitle_warehouseid}"/>
+                        <h:outputText value="#{bundle.ViewWarehouseLabel_address}"/>
+                        <h:outputText value="#{warehouseController.selected.address}" title="#{bundle.ViewWarehouseTitle_address}"/>
+                        <h:outputText value="#{bundle.ViewWarehouseLabel_phone}"/>
+                        <h:outputText value="#{warehouseController.selected.phone}" title="#{bundle.ViewWarehouseTitle_phone}"/>
+                        <h:outputText value="#{bundle.ViewWarehouseLabel_volume}"/>
+                        <h:outputText value="#{warehouseController.selected.volume}" title="#{bundle.ViewWarehouseTitle_volume}"/>
+                        <h:outputText value="#{bundle.ViewWarehouseLabel_zip}"/>
+                        <h:outputText value="#{warehouseController.selected.zip}" title="#{bundle.ViewWarehouseTitle_zip}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="WarehouseViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

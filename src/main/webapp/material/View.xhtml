@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      template="./common/template.xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="MaterialViewDlg" widgetVar="MaterialViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewMaterialTitle}">
+            <h:form id="MaterialViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{materialController.selected != null}">
+                        <h:outputText value="#{bundle.ViewMaterialLabel_materialid}"/>
+                        <h:outputText value="#{materialController.selected.materialid}" title="#{bundle.ViewMaterialTitle_materialid}"/>
+                        <h:outputText value="#{bundle.ViewMaterialLabel_mass}"/>
+                        <h:outputText value="#{materialController.selected.mass}" title="#{bundle.ViewMaterialTitle_mass}"/>
+                        <h:outputText value="#{bundle.ViewMaterialLabel_materialquality}"/>
+                        <h:outputText value="#{materialController.selected.materialquality}" title="#{bundle.ViewMaterialTitle_materialquality}"/>
+                        <h:outputText value="#{bundle.ViewMaterialLabel_materialquantity}"/>
+                        <h:outputText value="#{materialController.selected.materialquantity}" title="#{bundle.ViewMaterialTitle_materialquantity}"/>
+                        <h:outputText value="#{bundle.ViewMaterialLabel_materialtype}"/>
+                        <h:outputText value="#{materialController.selected.materialtype}" title="#{bundle.ViewMaterialTitle_materialtype}"/>
+                        <h:outputText value="#{bundle.ViewMaterialLabel_rentprice}"/>
+                        <h:outputText value="#{materialController.selected.rentprice}" title="#{bundle.ViewMaterialTitle_rentprice}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="MaterialViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

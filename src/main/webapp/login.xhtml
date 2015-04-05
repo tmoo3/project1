@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<ui:composition
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    template="./common/template.xhtml"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <body>
+
+        <ui:composition template="./common/template.xhtml">
+
+            <ui:define name="title">
+                MaterialManagement :: Login
+            </ui:define>
+
+            <ui:define name="navbar">
+				Login
+            </ui:define>
+
+            <ui:define name="content">
+                <h:form>
+					<h:messages styleClass="alert alert-danger" p:role="alert"></h:messages>
+					<div class="col-md-6">
+						<div class="input-group">
+							<span class="input-group-addon">Username:</span>
+							<h:inputText label="Login" p:placeholder="" p:id="username"
+										 value="${login.dto.name}" class="form-control"
+                                                                                 required="true" autocomplete="false">
+							</h:inputText>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="input-group">
+							<span class="input-group-addon">Password:</span>
+							<h:inputSecret label="Login" p:placeholder=""
+										   value="${login.dto.password}" class="form-control"
+										   required="true">
+							</h:inputSecret>
+						</div>
+					</div>
+					<div class="col-md-12">
+						<p style="margin-top: 10px">
+							<h:commandButton class="btn btn-primary" action="${login.login()}" value="Login"></h:commandButton>
+						</p>
+					</div>
+				</h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</ui:composition>

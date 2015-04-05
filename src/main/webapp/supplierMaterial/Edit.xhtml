@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      template="./common/template.xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="SupplierMaterialEditDlg" widgetVar="SupplierMaterialEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditSupplierMaterialTitle}">
+            <h:form id="SupplierMaterialEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{supplierMaterialController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditSupplierMaterialLabel_experiencenote}" for="experiencenote" />
+                        <p:inputText id="experiencenote" value="#{supplierMaterialController.selected.experiencenote}" title="#{bundle.EditSupplierMaterialTitle_experiencenote}" />
+                        <p:outputLabel value="#{bundle.EditSupplierMaterialLabel_supplier}" for="supplier" />
+                        <p:selectOneMenu id="supplier" value="#{supplierMaterialController.selected.supplier}" required="true" requiredMessage="#{bundle.EditSupplierMaterialRequiredMessage_supplier}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{supplierController.itemsAvailableSelectOne}"
+                                           var="supplierItem"
+                                           itemValue="#{supplierItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditSupplierMaterialLabel_material}" for="material" />
+                        <p:selectOneMenu id="material" value="#{supplierMaterialController.selected.material}" required="true" requiredMessage="#{bundle.EditSupplierMaterialRequiredMessage_material}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{materialController.itemsAvailableSelectOne}"
+                                           var="materialItem"
+                                           itemValue="#{materialItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{supplierMaterialController.update}" value="#{bundle.Save}" update="display,:SupplierMaterialListForm:datalist,:growl" oncomplete="handleSubmit(args, 'SupplierMaterialEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="SupplierMaterialEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

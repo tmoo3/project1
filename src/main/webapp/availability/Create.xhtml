@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      template="./common/template.xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="AvailabilityCreateDlg" widgetVar="AvailabilityCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateAvailabilityTitle}">
+            <h:form id="AvailabilityCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{availabilityController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateAvailabilityLabel_availabilityid}" for="availabilityid" />
+                        <p:inputText id="availabilityid" value="#{availabilityController.selected.availabilityid}" title="#{bundle.CreateAvailabilityTitle_availabilityid}" required="true" requiredMessage="#{bundle.CreateAvailabilityRequiredMessage_availabilityid}"/>
+                        <p:outputLabel value="#{bundle.CreateAvailabilityLabel_durationperminute}" for="durationperminute" />
+                        <p:inputText id="durationperminute" value="#{availabilityController.selected.durationperminute}" title="#{bundle.CreateAvailabilityTitle_durationperminute}" />
+                        <p:outputLabel value="#{bundle.CreateAvailabilityLabel_startdate}" for="startdate" />
+                        <p:calendar id="startdate" pattern="MM/dd/yyyy" value="#{availabilityController.selected.startdate}" title="#{bundle.EditAvailabilityTitle_startdate}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateAvailabilityLabel_starttime}" for="starttime" />
+                        <p:calendar id="starttime" pattern="HH:mm:ss" value="#{availabilityController.selected.starttime}" title="#{bundle.EditAvailabilityTitle_starttime}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateAvailabilityLabel_supplierid}" for="supplierid" />
+                        <p:selectOneMenu id="supplierid" value="#{availabilityController.selected.supplierid}" >
+                            <f:selectItems value="#{supplierController.itemsAvailableSelectOne}"
+                                           var="supplieridItem"
+                                           itemValue="#{supplieridItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateAvailabilityLabel_materialid}" for="materialid" />
+                        <p:selectOneMenu id="materialid" value="#{availabilityController.selected.materialid}" >
+                            <f:selectItems value="#{materialController.itemsAvailableSelectOne}"
+                                           var="materialidItem"
+                                           itemValue="#{materialidItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{availabilityController.create}" value="#{bundle.Save}" update="display,:AvailabilityListForm:datalist,:growl" oncomplete="handleSubmit(args,'AvailabilityCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="AvailabilityCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

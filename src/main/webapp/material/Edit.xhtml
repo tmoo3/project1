@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      template="./common/template.xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="MaterialEditDlg" widgetVar="MaterialEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditMaterialTitle}">
+            <h:form id="MaterialEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{materialController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditMaterialLabel_materialid}" for="materialid" />
+                        <p:inputText id="materialid" value="#{materialController.selected.materialid}" title="#{bundle.EditMaterialTitle_materialid}" required="true" requiredMessage="#{bundle.EditMaterialRequiredMessage_materialid}"/>
+                        <p:outputLabel value="#{bundle.EditMaterialLabel_mass}" for="mass" />
+                        <p:inputText id="mass" value="#{materialController.selected.mass}" title="#{bundle.EditMaterialTitle_mass}" />
+                        <p:outputLabel value="#{bundle.EditMaterialLabel_materialquality}" for="materialquality" />
+                        <p:inputText id="materialquality" value="#{materialController.selected.materialquality}" title="#{bundle.EditMaterialTitle_materialquality}" />
+                        <p:outputLabel value="#{bundle.EditMaterialLabel_materialquantity}" for="materialquantity" />
+                        <p:inputText id="materialquantity" value="#{materialController.selected.materialquantity}" title="#{bundle.EditMaterialTitle_materialquantity}" />
+                        <p:outputLabel value="#{bundle.EditMaterialLabel_materialtype}" for="materialtype" />
+                        <p:inputText id="materialtype" value="#{materialController.selected.materialtype}" title="#{bundle.EditMaterialTitle_materialtype}" />
+                        <p:outputLabel value="#{bundle.EditMaterialLabel_rentprice}" for="rentprice" />
+                        <p:inputText id="rentprice" value="#{materialController.selected.rentprice}" title="#{bundle.EditMaterialTitle_rentprice}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{materialController.update}" value="#{bundle.Save}" update="display,:MaterialListForm:datalist,:growl" oncomplete="handleSubmit(args, 'MaterialEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="MaterialEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

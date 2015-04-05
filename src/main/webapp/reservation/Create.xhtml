@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      template="./common/template.xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ReservationCreateDlg" widgetVar="ReservationCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateReservationTitle}">
+            <h:form id="ReservationCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{reservationController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateReservationLabel_reservationid}" for="reservationid" />
+                        <p:inputText id="reservationid" value="#{reservationController.selected.reservationid}" title="#{bundle.CreateReservationTitle_reservationid}" required="true" requiredMessage="#{bundle.CreateReservationRequiredMessage_reservationid}"/>
+                        <p:outputLabel value="#{bundle.CreateReservationLabel_durationperminute}" for="durationperminute" />
+                        <p:inputText id="durationperminute" value="#{reservationController.selected.durationperminute}" title="#{bundle.CreateReservationTitle_durationperminute}" />
+                        <p:outputLabel value="#{bundle.CreateReservationLabel_startdate}" for="startdate" />
+                        <p:calendar id="startdate" pattern="MM/dd/yyyy" value="#{reservationController.selected.startdate}" title="#{bundle.EditReservationTitle_startdate}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateReservationLabel_starttime}" for="starttime" />
+                        <p:calendar id="starttime" pattern="HH:mm:ss" value="#{reservationController.selected.starttime}" title="#{bundle.EditReservationTitle_starttime}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateReservationLabel_total}" for="total" />
+                        <p:inputText id="total" value="#{reservationController.selected.total}" title="#{bundle.CreateReservationTitle_total}" />
+                        <p:outputLabel value="#{bundle.CreateReservationLabel_clientid}" for="clientid" />
+                        <p:selectOneMenu id="clientid" value="#{reservationController.selected.clientid}" >
+                            <f:selectItems value="#{clientController.itemsAvailableSelectOne}"
+                                           var="clientidItem"
+                                           itemValue="#{clientidItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{reservationController.create}" value="#{bundle.Save}" update="display,:ReservationListForm:datalist,:growl" oncomplete="handleSubmit(args,'ReservationCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ReservationCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
