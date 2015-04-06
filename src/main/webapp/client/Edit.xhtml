@@ -12,19 +12,18 @@
         <p:dialog id="ClientEditDlg" widgetVar="ClientEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditClientTitle}">
             <h:form id="ClientEditForm">
                 <h:panelGroup id="display">
+                    <h:inputHidden id="clientid" value="#{clientController.selected.clientid}"/>
                     <p:panelGrid columns="2" rendered="#{clientController.selected != null}">
-                        <p:outputLabel value="#{bundle.EditClientLabel_clientid}" for="clientid" />
-                        <p:inputText id="clientid" value="#{clientController.selected.clientid}" title="#{bundle.EditClientTitle_clientid}" required="true" requiredMessage="#{bundle.EditClientRequiredMessage_clientid}"/>
                         <p:outputLabel value="#{bundle.EditClientLabel_address}" for="address" />
-                        <p:inputText id="address" value="#{clientController.selected.address}" title="#{bundle.EditClientTitle_address}" />
+                        <p:inputText id="address" required="true" value="#{clientController.selected.address}" title="#{bundle.EditClientTitle_address}" />
                         <p:outputLabel value="#{bundle.EditClientLabel_firstname}" for="firstname" />
-                        <p:inputText id="firstname" value="#{clientController.selected.firstname}" title="#{bundle.EditClientTitle_firstname}" />
+                        <p:inputText id="firstname" required="true" value="#{clientController.selected.firstname}" title="#{bundle.EditClientTitle_firstname}" />
                         <p:outputLabel value="#{bundle.EditClientLabel_lastname}" for="lastname" />
-                        <p:inputText id="lastname" value="#{clientController.selected.lastname}" title="#{bundle.EditClientTitle_lastname}" />
+                        <p:inputText id="lastname" required="true" value="#{clientController.selected.lastname}" title="#{bundle.EditClientTitle_lastname}" />
                         <p:outputLabel value="#{bundle.EditClientLabel_mobile}" for="mobile" />
-                        <p:inputText id="mobile" value="#{clientController.selected.mobile}" title="#{bundle.EditClientTitle_mobile}" />
+                        <p:inputText id="mobile" required="true" value="#{clientController.selected.mobile}" title="#{bundle.EditClientTitle_mobile}" />
                         <p:outputLabel value="#{bundle.EditClientLabel_zip}" for="zip" />
-                        <p:inputText id="zip" value="#{clientController.selected.zip}" title="#{bundle.EditClientTitle_zip}" />
+                        <p:inputText id="zip" required="true" value="#{clientController.selected.zip}" title="#{bundle.EditClientTitle_zip}" />
                     </p:panelGrid>
                     <p:commandButton actionListener="#{clientController.update}" value="#{bundle.Save}" update="display,:ClientListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ClientEditDialog');"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="ClientEditDialog.hide()"/>

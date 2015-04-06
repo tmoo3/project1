@@ -12,27 +12,26 @@
         <p:dialog id="AvailabilityEditDlg" widgetVar="AvailabilityEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditAvailabilityTitle}">
             <h:form id="AvailabilityEditForm">
                 <h:panelGroup id="display">
+                    <h:inputHidden id="availabilityid" value="#{availabilityController.selected.availabilityid}"/>
                     <p:panelGrid columns="2" rendered="#{availabilityController.selected != null}">
-                        <p:outputLabel value="#{bundle.EditAvailabilityLabel_availabilityid}" for="availabilityid" />
-                        <p:inputText id="availabilityid" value="#{availabilityController.selected.availabilityid}" title="#{bundle.EditAvailabilityTitle_availabilityid}" required="true" requiredMessage="#{bundle.EditAvailabilityRequiredMessage_availabilityid}"/>
                         <p:outputLabel value="#{bundle.EditAvailabilityLabel_durationperminute}" for="durationperminute" />
-                        <p:inputText id="durationperminute" value="#{availabilityController.selected.durationperminute}" title="#{bundle.EditAvailabilityTitle_durationperminute}" />
+                        <p:inputText id="durationperminute" required="true" value="#{availabilityController.selected.durationperminute}" title="#{bundle.EditAvailabilityTitle_durationperminute}" />
                         <p:outputLabel value="#{bundle.EditAvailabilityLabel_startdate}" for="startdate" />
-                        <p:calendar id="startdate" pattern="MM/dd/yyyy" value="#{availabilityController.selected.startdate}" title="#{bundle.EditAvailabilityTitle_startdate}"  showOn="button"/>
+                        <p:calendar id="startdate" required="true" pattern="MM/dd/yyyy" value="#{availabilityController.selected.startdate}" title="#{bundle.EditAvailabilityTitle_startdate}"  showOn="button"/>
                         <p:outputLabel value="#{bundle.EditAvailabilityLabel_starttime}" for="starttime" />
-                        <p:calendar id="starttime" pattern="HH:mm:ss" value="#{availabilityController.selected.starttime}" title="#{bundle.EditAvailabilityTitle_starttime}"  showOn="button"/>
+                        <p:calendar id="starttime" required="true" pattern="HH:mm" value="#{availabilityController.selected.starttime}" title="#{bundle.EditAvailabilityTitle_starttime}"  showOn="button"/>
                         <p:outputLabel value="#{bundle.EditAvailabilityLabel_supplierid}" for="supplierid" />
-                        <p:selectOneMenu id="supplierid" value="#{availabilityController.selected.supplierid}" >
-                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                        <p:selectOneMenu id="supplierid" required="true" value="#{availabilityController.selected.supplierid}" >
+                            <f:selectItem itemLabel="#{bundle.CreateMaterialTitle_materialtype}"/>
                             <f:selectItems value="#{supplierController.itemsAvailableSelectOne}"
-                                           var="supplieridItem"
+                                           var="supplieridItem" itemLabel="#{supplieridItem.bedrijfsnaam}"
                                            itemValue="#{supplieridItem}"/>
                         </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.EditAvailabilityLabel_materialid}" for="materialid" />
                         <p:selectOneMenu id="materialid" value="#{availabilityController.selected.materialid}" >
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
                             <f:selectItems value="#{materialController.itemsAvailableSelectOne}"
-                                           var="materialidItem"
+                                           var="materialidItem" itemLabel="#{materialidItem.materialtype}"
                                            itemValue="#{materialidItem}"/>
                         </p:selectOneMenu>
                     </p:panelGrid>

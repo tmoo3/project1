@@ -8,15 +8,54 @@
     <h:head>
         <title><ui:insert name="title">Default Title</ui:insert></title>
         <h:outputStylesheet library="css" name="jsfcrud.css"/>
+        <h:outputStylesheet library="css" name="theme.css"/>
         <h:outputScript library="js" name="jsfcrud.js"/>
     </h:head>
 
     <h:body>
-
+        <ui:fragment rendered="${!sessionDto.userDto.loggedIn}"><script>window.location = "../login.xhtml";</script></ui:fragment>
         <p:growl id="growl" life="3000" />
-
         <p:layout fullPage="true">
-            <p:layoutUnit position="north" size="65" header="#{bundle.AppName}">
+            <p:layoutUnit position="north">
+                <h:form>
+
+                    <nav style="width:100%;" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+                        <div class="container">
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                                <a class="navbar-brand" href="../faces/main.xhtml">Bungalow park</a>
+                            </div>
+                            <!-- A command-action must always be in a form, it also updates all the data in the form.-->
+                            <div id="navbar" class="navbar-collapse collapse">
+                                <ul class="nav navbar-nav navbar-right">
+                                    <!-- Hide all the links if the user has not logged in! -->
+                                    <ui:fragment rendered="${sessionDto.userDto.loggedIn}"> 
+                                        <li><a href="#">Admin</a>
+                                            <ul>
+                                                <li><a href="../faces/users/List.xhtml">Users</a></li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <!-- This is true for all pages implementing the template, so we did not have a specific controller for the template.--> 
+                                            <h:commandLink action="${login.logout()}">Logout</h:commandLink>
+                                        </li>
+                                    </ui:fragment>
+                                    <ui:fragment rendered="${!sessionDto.userDto.loggedIn}">
+                                        <li><a href="../faces/login.xhtml">Login</a></li>
+                                    </ui:fragment>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+
+                </h:form>
                 <h:form id="menuForm">
                     <p:menubar>
                         <p:menuitem value="#{bundle.Home}" outcome="/index" icon="ui-icon-home"/>
