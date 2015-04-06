@@ -68,6 +68,12 @@
                             </f:facet>
                             <h:outputText value="#{item.clientid}"/>
                         </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.EditClientTitle_lastname}"/>
+                            </f:facet>
+                            <h:outputText value="#{clientController.getClient(item.clientid.clientid).lastname}"/>
+                        </p:column>
                         <f:facet name="footer">
                             <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{reservationController.prepareCreate}" update=":ReservationCreateForm" oncomplete="PF('ReservationCreateDialog').show()"/>
                             <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":ReservationViewForm" oncomplete="PF('ReservationViewDialog').show()" disabled="#{empty reservationController.selected}"/>
