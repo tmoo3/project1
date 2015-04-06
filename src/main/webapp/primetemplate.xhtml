@@ -37,11 +37,21 @@
                                 <ul class="nav navbar-nav navbar-right">
                                     <!-- Hide all the links if the user has not logged in! -->
                                     <ui:fragment rendered="${sessionDto.userDto.loggedIn}"> 
+                                        <li><a href="#">Clients</a>
+                                            <ul>
+                                                <li><a href="../faces/client/List.xhtml">Clients</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="#">Reservations</a>
+                                            <ul>
+                                                <li><a href="../faces/reservation/List.xhtml">Reservations</a></li>
+                                            </ul>
+                                        </li>
                                         <li><a href="#">Admin</a>
                                             <ul>
                                                 <li><a href="../faces/users/List.xhtml">Users</a></li>
                                             </ul>
-                                        </li>
+                                        </li>                                        
                                         <li>
                                             <!-- This is true for all pages implementing the template, so we did not have a specific controller for the template.--> 
                                             <h:commandLink action="${login.logout()}">Logout</h:commandLink>
