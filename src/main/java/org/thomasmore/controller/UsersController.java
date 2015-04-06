@@ -6,7 +6,9 @@ import org.thomasmore.controller.util.JsfUtil.PersistAction;
 import org.thomasmore.session.UsersFacade;
 
 import java.io.Serializable;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -80,7 +82,7 @@ public class UsersController implements Serializable {
         }
         return items;
     }
-
+    
     private void persist(PersistAction persistAction, String successMessage) {
         if (selected != null) {
             setEmbeddableKeys();

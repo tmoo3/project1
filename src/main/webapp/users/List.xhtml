@@ -16,25 +16,32 @@
 
         <ui:define name="body">
             <h:form id="UsersListForm">
-                <p:panel header="#{bundle.ListUsersTitle}">
+                <p:panel>
+                    <h:form id="SearchIdForm">
+                        <p:outputPanel>  
+                            <h:outputText value="Search:" />  
+
+                        </p:outputPanel> 
+                    </h:form>
                     <p:dataTable id="datalist" value="#{usersController.items}" var="item"
                                  selectionMode="single" selection="#{usersController.selected}"
                                  paginator="true"
                                  rowKey="#{item.userid}"
                                  rows="10"
-                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 rowsPerPageTemplate="1,10"
+                                 paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
                                  >
 
                         <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
                         <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
 
-                        <p:column>
+                        <p:column sortBy="#{item.userid}" filterBy="#{item.userid}">
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListUsersTitle_userid}"/>
                             </f:facet>
                             <h:outputText value="#{item.userid}"/>
                         </p:column>
-                        <p:column>
+                        <p:column sortBy="#{item.username}" filterBy="#{item.username}">
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListUsersTitle_username}"/>
                             </f:facet>
