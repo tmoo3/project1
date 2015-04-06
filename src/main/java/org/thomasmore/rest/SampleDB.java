@@ -55,11 +55,11 @@ public class SampleDB {
         setupdbEntity.setCommunication("We may show a message about material order here. Or show the firm's motto to employees. This message is stored in the DB.");
         objectsToSave.add(setupdbEntity);
         
-        String p = generateHash("a");
+        //String p = generateHash("a");
         Users userEntity = new Users();
         userEntity.setUserid(1);
         userEntity.setUsername("a");
-        userEntity.setUserpassword(p);
+        userEntity.setUserpassword("a");
         objectsToSave.add(userEntity);
         for (Object objectsToSave1 : objectsToSave) {
             em.persist(objectsToSave1);

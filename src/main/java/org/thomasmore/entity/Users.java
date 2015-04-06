@@ -6,6 +6,8 @@
 package org.thomasmore.entity;
 
 import java.io.Serializable;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -72,7 +74,7 @@ public class Users implements Serializable {
     }
 
     public void setUserpassword(String userpassword) {
-        this.userpassword = userpassword;
+        this.userpassword = generateHash(userpassword);
     }
 
     @Override
@@ -99,5 +101,23 @@ public class Users implements Serializable {
     public String toString() {
         return "org.thomasmore.entity.Users[ userid=" + userid + " ]";
     }
-    
+        public String generateHash(String passwordToHash) {
+        String generatedPassword = null;
+        try {
+            MessageDigest md = MessageDigest.getInstance("SHA-512");
+            md.update(passwordToHash.getBytes());
+            byte[] bytes = md.digest();
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < bytes.length; i++) {
+                sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
+            }
+            generatedPassword = sb.toString();
+        }
+        catch (NoSuchAlgorithmException e) {
+            //e.printStackTrace();
+            System.out.println("Error generating hash!");
+        }
+        System.out.println("Generated hash: " + generatedPassword);
+        return generatedPassword;
+    }
 }

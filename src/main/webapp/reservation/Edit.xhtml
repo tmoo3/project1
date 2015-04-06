@@ -12,9 +12,8 @@
         <p:dialog id="ReservationEditDlg" widgetVar="ReservationEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditReservationTitle}">
             <h:form id="ReservationEditForm">
                 <h:panelGroup id="display">
+                    <h:inputHidden id="reservationid" value="#{reservationController.selected.reservationid}"/>
                     <p:panelGrid columns="2" rendered="#{reservationController.selected != null}">
-                        <p:outputLabel value="#{bundle.EditReservationLabel_reservationid}" for="reservationid" />
-                        <p:inputText id="reservationid" value="#{reservationController.selected.reservationid}" title="#{bundle.EditReservationTitle_reservationid}" required="true" requiredMessage="#{bundle.EditReservationRequiredMessage_reservationid}"/>
                         <p:outputLabel value="#{bundle.EditReservationLabel_durationperminute}" for="durationperminute" />
                         <p:inputText id="durationperminute" value="#{reservationController.selected.durationperminute}" title="#{bundle.EditReservationTitle_durationperminute}" />
                         <p:outputLabel value="#{bundle.EditReservationLabel_startdate}" for="startdate" />

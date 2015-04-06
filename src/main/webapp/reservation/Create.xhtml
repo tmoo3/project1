@@ -13,18 +13,16 @@
             <h:form id="ReservationCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{reservationController.selected != null}">
-                        <!-- We will let autogeneration of IDs take place <p:outputLabel value="#{bundle.CreateReservationLabel_reservationid}" for="reservationid" />
-                        <p:inputText id="reservationid" value="#{reservationController.selected.reservationid}" title="#{bundle.CreateReservationTitle_reservationid}" required="true" requiredMessage="#{bundle.CreateReservationRequiredMessage_reservationid}"/>-->
                         <p:outputLabel value="#{bundle.CreateReservationLabel_durationperminute}" for="durationperminute" />
-                        <p:inputText id="durationperminute" value="#{reservationController.selected.durationperminute}" title="#{bundle.CreateReservationTitle_durationperminute}" />
+                        <p:inputText id="durationperminute" required="true" value="#{reservationController.selected.durationperminute}" title="#{bundle.CreateReservationTitle_durationperminute}" />
                         <p:outputLabel value="#{bundle.CreateReservationLabel_startdate}" for="startdate" />
-                        <p:calendar id="startdate" pattern="MM/dd/yyyy" value="#{reservationController.selected.startdate}" title="#{bundle.EditReservationTitle_startdate}"  showOn="button"/>
+                        <p:calendar id="startdate" required="true" pattern="MM/dd/yyyy" value="#{reservationController.selected.startdate}" title="#{bundle.EditReservationTitle_startdate}"  showOn="button"/>
                         <p:outputLabel value="#{bundle.CreateReservationLabel_starttime}" for="starttime" />
-                        <p:calendar id="starttime" pattern="HH:mm" value="#{reservationController.selected.starttime}" title="#{bundle.EditReservationTitle_starttime}"  showOn="button"/>
+                        <p:calendar id="starttime" required="true" pattern="HH:mm" value="#{reservationController.selected.starttime}" title="#{bundle.EditReservationTitle_starttime}"  showOn="button"/>
                         <p:outputLabel value="#{bundle.CreateReservationLabel_total}" for="total" />
-                        <p:inputText id="total" value="#{reservationController.selected.total}" title="#{bundle.CreateReservationTitle_total}" />
+                        <p:inputText id="total" required="true" value="#{reservationController.selected.total}" title="#{bundle.CreateReservationTitle_total}" />
                         <p:outputLabel value="#{bundle.CreateReservationLabel_clientid}" for="clientid" />
-                        <p:selectOneMenu id="clientid" value="#{reservationController.selected.clientid}" >
+                        <p:selectOneMenu id="clientid" value="#{reservationController.selected.clientid}" required="true">
                             <f:selectItems value="#{clientController.itemsAvailableSelectOne}"
                                            var="clientidItem" itemLabel="#{clientidItem.lastname}"
                                            itemValue="#{clientidItem}"/>

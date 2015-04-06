@@ -13,8 +13,6 @@
             <h:form id="UsersCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{usersController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreateUsersLabel_userid}" for="userid" />
-                        <p:inputText id="userid" value="#{usersController.selected.userid}" title="#{bundle.CreateUsersTitle_userid}" required="true" requiredMessage="#{bundle.CreateUsersRequiredMessage_userid}"/>
                         <p:outputLabel value="#{bundle.CreateUsersLabel_username}" for="username" />
                         <p:inputText id="username" value="#{usersController.selected.username}" title="#{bundle.CreateUsersTitle_username}" />
                         <p:outputLabel value="#{bundle.CreateUsersLabel_userpassword}" for="userpassword" />
