@@ -18,10 +18,6 @@
             <h:form id="UsersListForm">
                 <p:panel>
                     <h:form id="SearchIdForm">
-                        <p:outputPanel>  
-                            <h:outputText value="Search:" />  
-
-                        </p:outputPanel> 
                     </h:form>
                     <p:dataTable id="datalist" value="#{usersController.items}" var="item"
                                  selectionMode="single" selection="#{usersController.selected}"
