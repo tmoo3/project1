@@ -37,12 +37,11 @@ import javax.persistence.NonUniqueResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import org.thomasmore.controller.SessionDto;
-
-
+import org.thomasmore.entity.Users;
 
 /**
  *
- * @author lucs
+ * @author H & lucs
  */
 @Named(value = "login")
 @RequestScoped
@@ -65,22 +64,38 @@ public class LoginController {
         return "/index.xhtml?faces-redirect=true";
     }
 
+    /* Will be using NamedQuery but we may also use NativeQuery and SQL commands :) .
     public String getPasswordByName(String userName) {
-        String namequery = "SELECT USERPASSWORD FROM USERS u WHERE u.USERNAME='" + userName + "'";
-        Query query = em.createNativeQuery(namequery);
+     String namequery = "SELECT USERPASSWORD FROM USERS u WHERE u.USERNAME='" + userName + "'";
+     Query query = em.createNativeQuery(namequery);
+     try {
+     String myuser = (String) query.getSingleResult().toString();
+     if (myuser.length() > 0) {
+     System.out.println("Password from DB: " + myuser);
+     return myuser;
+     } else {
+     return null;
+     }
+     }
+     catch (NoResultException nre) {
+     return null;
+     }
+     catch (NonUniqueResultException nure) {
+     return null;
+     }
+     }
+     */
+    public String getPasswordByName(String userName) {
+        Users u = (Users) em.createNamedQuery("Users.findByUsername").setParameter("username", userName).getSingleResult();
         try {
-            String myuser = (String) query.getSingleResult().toString();
+            String myuser = u.getUserpassword();
             if (myuser.length() > 0) {
                 System.out.println("Password from DB: " + myuser);
                 return myuser;
             } else {
                 return null;
             }
-        }
-        catch (NoResultException nre) {
-            return null;
-        }
-        catch (NonUniqueResultException nure) {
+        } catch (NoResultException | NonUniqueResultException nre) {
             return null;
         }
     }
@@ -126,8 +141,7 @@ public class LoginController {
                 sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
             }
             generatedPassword = sb.toString();
-        }
-        catch (NoSuchAlgorithmException e) {
+        } catch (NoSuchAlgorithmException e) {
             //e.printStackTrace();
             System.out.println("Error generating hash!");
         }
