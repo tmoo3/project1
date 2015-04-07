@@ -25,7 +25,6 @@
                                  rowKey="#{item.userid}"
                                  rows="10"
                                  rowsPerPageTemplate="1,10"
-                                 paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
                                  >
 
                         <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
@@ -56,6 +55,27 @@
                             <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{usersController.destroy}" update=":growl,datalist" disabled="#{empty usersController.selected}"/>
                         </f:facet>
                     </p:dataTable>
+                        <br /><br />
+                    <h:commandLink>
+                        <p:graphicImage name="img/excel.png" />
+                        <p:dataExporter type="xls" target="datalist" fileName="#{bundle.ListUsersTitle}" pageOnly="true"/>
+                    </h:commandLink>
+
+                    <h:commandLink>
+                        <p:graphicImage name="img/pdf.png" />
+                        <p:dataExporter type="pdf" target="datalist" fileName="#{bundle.ListUsersTitle}" pageOnly="true" />
+                    </h:commandLink>
+
+                    <h:commandLink>
+                        <p:graphicImage name="img/csv.png" />
+                        <p:dataExporter type="csv" target="datalist" fileName="#{bundle.ListUsersTitle}" pageOnly="true" />
+                    </h:commandLink>
+
+                    <h:commandLink>
+                        <p:graphicImage name="img/xml.png" />
+                        <p:dataExporter type="xml" target="datalist" fileName="#{bundle.ListUsersTitle}" pageOnly="true" />
+                    </h:commandLink>
+
                 </p:panel>
             </h:form>
 

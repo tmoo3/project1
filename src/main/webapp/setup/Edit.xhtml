@@ -12,11 +12,10 @@
         <p:dialog id="SetupEditDlg" widgetVar="SetupEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditSetupTitle}">
             <h:form id="SetupEditForm">
                 <h:panelGroup id="display">
+                    <h:inputHidden id="availabilityid" value="#{setupController.selected.setupid}"/>
                     <p:panelGrid columns="2" rendered="#{setupController.selected != null}">
-                        <p:outputLabel value="#{bundle.EditSetupLabel_setupid}" for="setupid" />
-                        <p:inputText id="setupid" value="#{setupController.selected.setupid}" title="#{bundle.EditSetupTitle_setupid}" required="true" requiredMessage="#{bundle.EditSetupRequiredMessage_setupid}"/>
                         <p:outputLabel value="#{bundle.EditSetupLabel_communication}" for="communication" />
-                        <p:inputText id="communication" value="#{setupController.selected.communication}" title="#{bundle.EditSetupTitle_communication}" />
+                        <p:inputTextarea id="communication" value="#{setupController.selected.communication}" title="#{bundle.EditSetupTitle_communication}" />
                     </p:panelGrid>
                     <p:commandButton actionListener="#{setupController.update}" value="#{bundle.Save}" update="display,:SetupListForm:datalist,:growl" oncomplete="handleSubmit(args, 'SetupEditDialog');"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="SetupEditDialog.hide()"/>

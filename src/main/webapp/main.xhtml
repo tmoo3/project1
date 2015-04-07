@@ -10,7 +10,7 @@
 
     <ui:define name="navbar">
         <h2 class="textshadowlarge">Park Admin - Material Management</h2>
-        <ui:fragment rendered="${!sessionDto.userDto.loggedIn}"><script>window.location = "../login.xhtml";</script></ui:fragment>
+        <ui:fragment rendered="${!sessionDto.userDto.loggedIn}"><script>window.location = "/project1/faces/login.xhtml";</script></ui:fragment>
             ${index.dto.name}
     </ui:define>
 

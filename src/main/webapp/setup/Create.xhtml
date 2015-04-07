@@ -13,8 +13,6 @@
             <h:form id="SetupCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{setupController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreateSetupLabel_setupid}" for="setupid" />
-                        <p:inputText id="setupid" value="#{setupController.selected.setupid}" title="#{bundle.CreateSetupTitle_setupid}" required="true" requiredMessage="#{bundle.CreateSetupRequiredMessage_setupid}"/>
                         <p:outputLabel value="#{bundle.CreateSetupLabel_communication}" for="communication" />
                         <p:inputText id="communication" value="#{setupController.selected.communication}" title="#{bundle.CreateSetupTitle_communication}" />
                     </p:panelGrid>

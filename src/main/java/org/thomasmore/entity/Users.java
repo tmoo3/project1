@@ -40,7 +40,7 @@ public class Users implements Serializable {
     @Column(name = "USERID")
     private Integer userid;
     @Size(max = 255)
-    @Column(name = "USERNAME")
+    @Column(name = "USERNAME",unique=true)
     private String username;
     @Size(max = 255)
     @Column(name = "USERPASSWORD")

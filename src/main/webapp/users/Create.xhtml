@@ -14,9 +14,9 @@
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{usersController.selected != null}">
                         <p:outputLabel value="#{bundle.CreateUsersLabel_username}" for="username" />
-                        <p:inputText id="username" value="#{usersController.selected.username}" title="#{bundle.CreateUsersTitle_username}" />
+                        <p:inputText id="username" required="true" value="#{usersController.selected.username}" title="#{bundle.CreateUsersTitle_username}" />
                         <p:outputLabel value="#{bundle.CreateUsersLabel_userpassword}" for="userpassword" />
-                        <p:inputText id="userpassword" value="#{usersController.selected.userpassword}" title="#{bundle.CreateUsersTitle_userpassword}" />
+                        <p:inputText id="userpassword" required="true" value="#{usersController.selected.userpassword}" title="#{bundle.CreateUsersTitle_userpassword}" />
                     </p:panelGrid>
                     <p:commandButton actionListener="#{usersController.create}" value="#{bundle.Save}" update="display,:UsersListForm:datalist,:growl" oncomplete="handleSubmit(args,'UsersCreateDialog');"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="UsersCreateDialog.hide()"/>

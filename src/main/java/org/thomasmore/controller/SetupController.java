@@ -56,7 +56,7 @@ public class SetupController implements Serializable {
     }
 
     public void create() {
-        persist(PersistAction.CREATE, ResourceBundle.getBundle("/Bundle").getString("SetupCreated"));
+        //persist(PersistAction.CREATE, ResourceBundle.getBundle("/Bundle").getString("SetupCreated"));
         if (!JsfUtil.isValidationFailed()) {
             items = null;    // Invalidate list of items to trigger re-query.
         }
@@ -67,7 +67,7 @@ public class SetupController implements Serializable {
     }
 
     public void destroy() {
-        persist(PersistAction.DELETE, ResourceBundle.getBundle("/Bundle").getString("SetupDeleted"));
+        //persist(PersistAction.DELETE, ResourceBundle.getBundle("/Bundle").getString("SetupDeleted"));
         if (!JsfUtil.isValidationFailed()) {
             selected = null; // Remove selection
             items = null;    // Invalidate list of items to trigger re-query.
