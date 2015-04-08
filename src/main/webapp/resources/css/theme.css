@@ -6550,15 +6550,17 @@ button.close {
 }
 nav {
     margin: 0 auto; 
-    text-align: center;
+    text-align: left;
 }
 
 nav ul ul {
     display: none;
+    text-align: left;
 }
 
 nav ul li:hover > ul {
     display: block;
+    text-align: left;
 }
 nav ul {
     padding: 0 20px;
@@ -6566,13 +6568,14 @@ nav ul {
     list-style: none;
     position: relative;
     display: inline-table;
+    text-align: left;
 }
 nav ul:after {
-    content: ""; clear: both; display: block;
+    content: ""; clear: both; display: block;text-align: left;
 }
 
 nav ul li {
-    float: left;
+    float: left;text-align: left;
 }
 nav ul li:hover {
     background: #4b545f;

@@ -5,7 +5,8 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
     <ui:composition template="/primetemplate.xhtml">
 
@@ -16,80 +17,93 @@
 
         <ui:define name="body">
             <h:form id="ClientListForm">
-                    <p:dataTable id="datalist" value="#{clientController.items}" var="item"
-                                 selectionMode="single" selection="#{clientController.selected}"
-                                 paginator="true"
-                                 rowKey="#{item.clientid}"
-                                 rows="10"
-                                 rowsPerPageTemplate="1,10"
-                                 >
+                <p:dataTable id="datalist" value="#{clientController.items}" var="item"
+                             selectionMode="single" selection="#{clientController.selected}"
+                             paginator="true"
+                             rowKey="#{item.clientid}"
+                             rows="10"
+                             rowsPerPageTemplate="1,10"
+                             >
 
-                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
-                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+                    <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                    <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
 
-                        <p:column sortBy="#{item.clientid}" filterBy="#{item.clientid}">
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListClientTitle_clientid}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.clientid}"/>
-                        </p:column>
-                        <p:column sortBy="#{item.address}" filterBy="#{item.address}">
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListClientTitle_address}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.address}"/>
-                        </p:column>
-                        <p:column sortBy="#{item.firstname}" filterBy="#{item.firstname}">
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListClientTitle_firstname}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.firstname}"/>
-                        </p:column>
-                        <p:column sortBy="#{item.lastname}" filterBy="#{item.lastname}">
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListClientTitle_lastname}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.lastname}"/>
-                        </p:column>
-                        <p:column sortBy="#{item.mobile}" filterBy="#{item.mobile}">
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListClientTitle_mobile}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.mobile}"/>
-                        </p:column>
-                        <p:column sortBy="#{item.zip}" filterBy="#{item.zip}">
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListClientTitle_zip}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.zip}"/>
-                        </p:column>
-                        <f:facet name="footer">
-                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{clientController.prepareCreate}" update=":ClientCreateForm" oncomplete="PF('ClientCreateDialog').show()"/>
-                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":ClientViewForm" oncomplete="PF('ClientViewDialog').show()" disabled="#{empty clientController.selected}"/>
-                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":ClientEditForm" oncomplete="PF('ClientEditDialog').show()" disabled="#{empty clientController.selected}"/>
-                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{clientController.destroy}" update=":growl,datalist" disabled="#{empty clientController.selected}"/>
+                    <p:column sortBy="#{item.clientid}" filterBy="#{item.clientid}">
+                        <f:facet name="header">
+                            <h:outputText value="#{bundle.ListClientTitle_clientid}"/>
                         </f:facet>
-                    </p:dataTable>
-                        <br /><br />
-                    <h:commandLink>
-                        <p:graphicImage name="img/excel.png" />
-                        <p:dataExporter type="xls" target="datalist" fileName="#{bundle.ListClientTitle}" pageOnly="true"/>
-                    </h:commandLink>
+                        <h:outputText value="#{item.clientid}"/>
+                    </p:column>
+                    <p:column sortBy="#{item.firstname}" filterBy="#{item.firstname}">
+                        <f:facet name="header">
+                            <h:outputText value="#{bundle.ListClientTitle_firstname}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.firstname}"/>
+                    </p:column>
+                    <p:column sortBy="#{item.lastname}" filterBy="#{item.lastname}">
+                        <f:facet name="header">
+                            <h:outputText value="#{bundle.ListClientTitle_lastname}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.lastname}"/>
+                    </p:column>
+                    <p:column sortBy="#{item.mobile}" filterBy="#{item.mobile}">
+                        <f:facet name="header">
+                            <h:outputText value="#{bundle.ListClientTitle_mobile}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.mobile}"/>
+                    </p:column>
+                    <p:column sortBy="#{item.address}" filterBy="#{item.address}">
+                        <f:facet name="header">
+                            <h:outputText value="#{bundle.ListClientTitle_address}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.address}"/>
+                    </p:column>
+                    <p:column sortBy="#{item.zip}" filterBy="#{item.zip}">
+                        <f:facet name="header">
+                            <h:outputText value="#{bundle.ListClientTitle_zip}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.zip}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Action"/>
+                        </f:facet>
+                        <c:set var="actionText">
+                        /reservation/List.xhtml?faces-redirect=true&amp;redirectedfromclientxhtml=1&amp;includeViewParams=true&amp;clientid=#{item.clientid} />
+                        </c:set>
+                        <p:commandButton 
+                            value="Reservation"
+                            ajax="true"
+                            action="#{''.concat('/reservation/List.xhtml?faces-redirect=true&amp;redirectedfromclientxhtml=1&amp;includeViewParams=true&amp;clientidpassed=').concat('#{item.clientid}')}">
+                        </p:commandButton>
+                    </p:column>
+                    <f:facet name="footer">
+                        <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{clientController.prepareCreate}" update=":ClientCreateForm" oncomplete="PF('ClientCreateDialog').show()"/>
+                        <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":ClientViewForm" oncomplete="PF('ClientViewDialog').show()" disabled="#{empty clientController.selected}"/>
+                        <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":ClientEditForm" oncomplete="PF('ClientEditDialog').show()" disabled="#{empty clientController.selected}"/>
+                        <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{clientController.destroy}" update=":growl,datalist" disabled="#{empty clientController.selected}"/>
+                    </f:facet>
+                </p:dataTable>
+                <br /><br />
+                <h:commandLink>
+                    <p:graphicImage name="img/excel.png" />
+                    <p:dataExporter type="xls" target="datalist" fileName="#{bundle.ListClientTitle}" pageOnly="true"/>
+                </h:commandLink>
 
-                    <h:commandLink>
-                        <p:graphicImage name="img/pdf.png" />
-                        <p:dataExporter type="pdf" target="datalist" fileName="#{bundle.ListClientTitle}" pageOnly="true" />
-                    </h:commandLink>
+                <h:commandLink>
+                    <p:graphicImage name="img/pdf.png" />
+                    <p:dataExporter type="pdf" target="datalist" fileName="#{bundle.ListClientTitle}" pageOnly="true" />
+                </h:commandLink>
 
-                    <h:commandLink>
-                        <p:graphicImage name="img/csv.png" />
-                        <p:dataExporter type="csv" target="datalist" fileName="#{bundle.ListClientTitle}" pageOnly="true" />
-                    </h:commandLink>
+                <h:commandLink>
+                    <p:graphicImage name="img/csv.png" />
+                    <p:dataExporter type="csv" target="datalist" fileName="#{bundle.ListClientTitle}" pageOnly="true" />
+                </h:commandLink>
 
-                    <h:commandLink>
-                        <p:graphicImage name="img/xml.png" />
-                        <p:dataExporter type="xml" target="datalist" fileName="#{bundle.ListClientTitle}" pageOnly="true" />
-                    </h:commandLink>
+                <h:commandLink>
+                    <p:graphicImage name="img/xml.png" />
+                    <p:dataExporter type="xml" target="datalist" fileName="#{bundle.ListClientTitle}" pageOnly="true" />
+                </h:commandLink>
             </h:form>
 
             <ui:include src="Create.xhtml"/>

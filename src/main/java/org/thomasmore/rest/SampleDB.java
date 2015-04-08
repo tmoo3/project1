@@ -36,6 +36,7 @@ import org.thomasmore.entity.Setup;
 import org.thomasmore.entity.Users;
 import org.thomasmore.entity.Supplier;
 import org.thomasmore.entity.Material;
+import org.thomasmore.entity.Client;
 
 
 /**
@@ -78,6 +79,22 @@ public class SampleDB {
         materialEntity.setMaterialtype(1);
         materialEntity.setRentprice((double) (1.1));
         objectsToSave.add(materialEntity);
+        
+        Client clientEntity = new Client();
+        clientEntity.setFirstname("Thomas");
+        clientEntity.setLastname("Sample");
+        clientEntity.setMobile("+32 4xx 77 7777");
+        clientEntity.setAddress("Zandpoortvest 60");
+        clientEntity.setZip("2800 Mechelen");
+        objectsToSave.add(clientEntity);
+        
+        Client clientEntity2 = new Client();
+        clientEntity2.setFirstname("Thomas");
+        clientEntity2.setLastname("More");
+        clientEntity2.setMobile("+32 4xx 77 7777");
+        clientEntity2.setAddress("Zandpoortvest 60");
+        clientEntity2.setZip("2800 Mechelen");
+        objectsToSave.add(clientEntity2);
                 
         for (Object objectsToSave1 : objectsToSave) {
             em.persist(objectsToSave1);

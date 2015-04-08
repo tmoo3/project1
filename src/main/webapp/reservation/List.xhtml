@@ -5,7 +5,8 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
     <ui:composition template="/primetemplate.xhtml">
 
@@ -15,75 +16,79 @@
         </ui:define>
 
         <ui:define name="body">
-            <h:form id="ReservationListForm">
-                <p:panel header="#{bundle.ListReservationTitle}">
-                    <p:dataTable id="datalist" value="#{reservationController.items}" var="item"
-                                 selectionMode="single" selection="#{reservationController.selected}"
-                                 paginator="true"
-                                 rowKey="#{item.reservationid}"
-                                 rows="10"
-                                 rowsPerPageTemplate="10,20,30,40,50"
-                                 >
-
-                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
-                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
-
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListReservationTitle_reservationid}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.reservationid}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListReservationTitle_durationperminute}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.durationperminute}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListReservationTitle_startdate}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.startdate}">
-                                <f:convertDateTime pattern="MM/dd/yyyy" />
-                            </h:outputText>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListReservationTitle_starttime}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.starttime}">
-                                <f:convertDateTime pattern="HH:mm:ss" />
-                            </h:outputText>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListReservationTitle_total}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.total}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListReservationTitle_clientid}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.clientid}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.EditClientTitle_lastname}"/>
-                            </f:facet>
-                            <h:outputText value="#{clientController.getClient(item.clientid.clientid).lastname}"/>
-                        </p:column>
-                        <f:facet name="footer">
-                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{reservationController.prepareCreate}" update=":ReservationCreateForm" oncomplete="PF('ReservationCreateDialog').show()"/>
-                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":ReservationViewForm" oncomplete="PF('ReservationViewDialog').show()" disabled="#{empty reservationController.selected}"/>
-                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":ReservationEditForm" oncomplete="PF('ReservationEditDialog').show()" disabled="#{empty reservationController.selected}"/>
-                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{reservationController.destroy}" update=":growl,datalist" disabled="#{empty reservationController.selected}"/>
-                        </f:facet>
-                    </p:dataTable>
-                </p:panel>
+            <h:form id="createButtonc">
+                <c:if test="#{param.get('redirectedfromclientxhtml')==1}">
+                    <h:inputHidden id="clientidpassed" value="#{param.get('clientidpassed')}"/> 
+                    <script>
+                        jQuery(document).ready(function () {document.getElementById('ReservationListForm:datalist:createButton').click();});
+                    </script>
+                </c:if>
             </h:form>
+            <h:form id="ReservationListForm">
+                <p:dataTable id="datalist" value="#{reservationController.items}" var="item"
+                             selectionMode="single" selection="#{reservationController.selected}"
+                             paginator="true"
+                             rowKey="#{item.reservationid}"
+                             rows="10"
+                             rowsPerPageTemplate="10,20,30,40,50"
+                             >
 
+                    <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                    <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{bundle.ListReservationTitle_reservationid}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.reservationid}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{bundle.ListReservationTitle_durationperminute}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.durationperminute}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{bundle.ListReservationTitle_startdate}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.startdate}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{bundle.ListReservationTitle_starttime}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.starttime}">
+                            <f:convertDateTime pattern="HH:mm:ss" />
+                        </h:outputText>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{bundle.ListReservationTitle_total}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.total}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{bundle.ListReservationTitle_clientid}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.clientid}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{bundle.EditClientTitle_lastname}"/>
+                        </f:facet>
+                        <h:outputText value="#{clientController.getClient(item.clientid.clientid).lastname}"/>
+                    </p:column>
+                    <f:facet name="footer">
+                        <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{reservationController.prepareCreate}" update=":ReservationCreateForm" oncomplete="PF('ReservationCreateDialog').show()"/>
+                        <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":ReservationViewForm" oncomplete="PF('ReservationViewDialog').show()" disabled="#{empty reservationController.selected}"/>
+                        <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":ReservationEditForm" oncomplete="PF('ReservationEditDialog').show()" disabled="#{empty reservationController.selected}"/>
+                        <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{reservationController.destroy}" update=":growl,datalist" disabled="#{empty reservationController.selected}"/>
+                    </f:facet>
+                </p:dataTable>
+            </h:form>
             <ui:include src="Create.xhtml"/>
             <ui:include src="Edit.xhtml"/>
             <ui:include src="View.xhtml"/>

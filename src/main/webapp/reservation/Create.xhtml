@@ -5,11 +5,19 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
     <ui:composition>
 
         <p:dialog id="ReservationCreateDlg" widgetVar="ReservationCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateReservationTitle}">
+            <h:form id="ReservationCreateDlgc">
+                <c:if test="#{param.get('redirectedfromclientxhtml')==1}">
+                    <script>
+                        jQuery(document).ready(function () {document.getElementById('ReservationListForm:datalist:createButton').click();});
+                    </script>
+                </c:if>
+            </h:form>
             <h:form id="ReservationCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{reservationController.selected != null}">
@@ -22,6 +30,7 @@
                         <p:outputLabel value="#{bundle.CreateReservationLabel_total}" for="total" />
                         <p:inputText id="total" required="true" value="#{reservationController.selected.total}" title="#{bundle.CreateReservationTitle_total}" />
                         <p:outputLabel value="#{bundle.CreateReservationLabel_clientid}" for="clientid" />
+
                         <p:selectOneMenu id="clientid" value="#{reservationController.selected.clientid}" required="true">
                             <f:selectItems value="#{clientController.itemsAvailableSelectOne}"
                                            var="clientidItem" itemLabel="#{clientidItem.lastname}"
