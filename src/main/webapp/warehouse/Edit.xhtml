@@ -12,17 +12,16 @@
         <p:dialog id="WarehouseEditDlg" widgetVar="WarehouseEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditWarehouseTitle}">
             <h:form id="WarehouseEditForm">
                 <h:panelGroup id="display">
+                    <h:inputHidden id="userid" value="#{warehouseController.selected.warehouseid}"/>  
                     <p:panelGrid columns="2" rendered="#{warehouseController.selected != null}">
-                        <p:outputLabel value="#{bundle.EditWarehouseLabel_warehouseid}" for="warehouseid" />
-                        <p:inputText id="warehouseid" value="#{warehouseController.selected.warehouseid}" title="#{bundle.EditWarehouseTitle_warehouseid}" required="true" requiredMessage="#{bundle.EditWarehouseRequiredMessage_warehouseid}"/>
                         <p:outputLabel value="#{bundle.EditWarehouseLabel_address}" for="address" />
-                        <p:inputText id="address" value="#{warehouseController.selected.address}" title="#{bundle.EditWarehouseTitle_address}" />
+                        <p:inputText id="address" required="true" value="#{warehouseController.selected.address}" title="#{bundle.EditWarehouseTitle_address}" />
                         <p:outputLabel value="#{bundle.EditWarehouseLabel_phone}" for="phone" />
-                        <p:inputText id="phone" value="#{warehouseController.selected.phone}" title="#{bundle.EditWarehouseTitle_phone}" />
+                        <p:inputText id="phone" required="true" value="#{warehouseController.selected.phone}" title="#{bundle.EditWarehouseTitle_phone}" />
                         <p:outputLabel value="#{bundle.EditWarehouseLabel_volume}" for="volume" />
-                        <p:inputText id="volume" value="#{warehouseController.selected.volume}" title="#{bundle.EditWarehouseTitle_volume}" />
+                        <p:inputText id="volume" required="true" value="#{warehouseController.selected.volume}" title="#{bundle.EditWarehouseTitle_volume}" />
                         <p:outputLabel value="#{bundle.EditWarehouseLabel_zip}" for="zip" />
-                        <p:inputText id="zip" value="#{warehouseController.selected.zip}" title="#{bundle.EditWarehouseTitle_zip}" />
+                        <p:inputText id="zip" required="true" value="#{warehouseController.selected.zip}" title="#{bundle.EditWarehouseTitle_zip}" />
                     </p:panelGrid>
                     <p:commandButton actionListener="#{warehouseController.update}" value="#{bundle.Save}" update="display,:WarehouseListForm:datalist,:growl" oncomplete="handleSubmit(args, 'WarehouseEditDialog');"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="WarehouseEditDialog.hide()"/>

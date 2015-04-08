@@ -14,15 +14,15 @@
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{supplierMaterialController.selected != null}">
                         <p:outputLabel value="#{bundle.CreateSupplierMaterialLabel_experiencenote}" for="experiencenote" />
-                        <p:inputText id="experiencenote" value="#{supplierMaterialController.selected.experiencenote}" title="#{bundle.CreateSupplierMaterialTitle_experiencenote}" />
+                        <p:inputText id="experiencenote" required="true" value="#{supplierMaterialController.selected.experiencenote}" title="#{bundle.CreateSupplierMaterialTitle_experiencenote}" />
                         <p:outputLabel value="#{bundle.CreateSupplierMaterialLabel_supplier}" for="supplier" />
-                        <p:selectOneMenu id="supplier" value="#{supplierMaterialController.selected.supplier}" required="true" requiredMessage="#{bundle.EditSupplierMaterialRequiredMessage_supplier}">
+                        <p:selectOneMenu id="supplier" required="true" value="#{supplierMaterialController.selected.supplier}" requiredMessage="#{bundle.EditSupplierMaterialRequiredMessage_supplier}">
                             <f:selectItems value="#{supplierController.itemsAvailableSelectOne}"
                                            var="supplierItem"
                                            itemValue="#{supplierItem}"/>
                         </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.CreateSupplierMaterialLabel_material}" for="material" />
-                        <p:selectOneMenu id="material" value="#{supplierMaterialController.selected.material}" required="true" requiredMessage="#{bundle.EditSupplierMaterialRequiredMessage_material}">
+                        <p:selectOneMenu id="material" required="true" value="#{supplierMaterialController.selected.material}" requiredMessage="#{bundle.EditSupplierMaterialRequiredMessage_material}">
                             <f:selectItems value="#{materialController.itemsAvailableSelectOne}"
                                            var="materialItem"
                                            itemValue="#{materialItem}"/>

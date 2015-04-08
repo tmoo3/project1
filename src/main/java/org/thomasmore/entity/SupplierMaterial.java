@@ -6,10 +6,14 @@
 package org.thomasmore.entity;
 
 import java.io.Serializable;
+import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
@@ -27,13 +31,15 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "SupplierMaterial.findAll", query = "SELECT s FROM SupplierMaterial s"),
-    @NamedQuery(name = "SupplierMaterial.findByExperiencenote", query = "SELECT s FROM SupplierMaterial s WHERE s.experiencenote = :experiencenote"),
-    @NamedQuery(name = "SupplierMaterial.findByMaterialmaterialid", query = "SELECT s FROM SupplierMaterial s WHERE s.supplierMaterialPK.materialmaterialid = :materialmaterialid"),
-    @NamedQuery(name = "SupplierMaterial.findBySuppliersupplierid", query = "SELECT s FROM SupplierMaterial s WHERE s.supplierMaterialPK.suppliersupplierid = :suppliersupplierid")})
+    @NamedQuery(name = "SupplierMaterial.findByExperiencenote", query = "SELECT s FROM SupplierMaterial s WHERE s.experiencenote = :experiencenote")
+})
 public class SupplierMaterial implements Serializable {
     private static final long serialVersionUID = 1L;
-    @EmbeddedId
-    protected SupplierMaterialPK supplierMaterialPK;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "SUPPLIERMATERIALID")
+    private Integer suppliermaterialid;
     @Size(max = 255)
     @Column(name = "EXPERIENCENOTE")
     private String experiencenote;
@@ -45,22 +51,6 @@ public class SupplierMaterial implements Serializable {
     private Material material;
 
     public SupplierMaterial() {
-    }
-
-    public SupplierMaterial(SupplierMaterialPK supplierMaterialPK) {
-        this.supplierMaterialPK = supplierMaterialPK;
-    }
-
-    public SupplierMaterial(int materialmaterialid, int suppliersupplierid) {
-        this.supplierMaterialPK = new SupplierMaterialPK(materialmaterialid, suppliersupplierid);
-    }
-
-    public SupplierMaterialPK getSupplierMaterialPK() {
-        return supplierMaterialPK;
-    }
-
-    public void setSupplierMaterialPK(SupplierMaterialPK supplierMaterialPK) {
-        this.supplierMaterialPK = supplierMaterialPK;
     }
 
     public String getExperiencenote() {
@@ -87,29 +77,11 @@ public class SupplierMaterial implements Serializable {
         this.material = material;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (supplierMaterialPK != null ? supplierMaterialPK.hashCode() : 0);
-        return hash;
+    public Integer getSuppliermaterialid() {
+        return suppliermaterialid;
     }
 
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof SupplierMaterial)) {
-            return false;
-        }
-        SupplierMaterial other = (SupplierMaterial) object;
-        if ((this.supplierMaterialPK == null && other.supplierMaterialPK != null) || (this.supplierMaterialPK != null && !this.supplierMaterialPK.equals(other.supplierMaterialPK))) {
-            return false;
-        }
-        return true;
+    public void setSuppliermaterialid(Integer suppliermaterialid) {
+        this.suppliermaterialid = suppliermaterialid;
     }
-
-    @Override
-    public String toString() {
-        return "org.thomasmore.entity.SupplierMaterial[ supplierMaterialPK=" + supplierMaterialPK + " ]";
-    }
-    
 }

@@ -12,6 +12,7 @@
         <p:dialog id="SupplierMaterialEditDlg" widgetVar="SupplierMaterialEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditSupplierMaterialTitle}">
             <h:form id="SupplierMaterialEditForm">
                 <h:panelGroup id="display">
+                    <h:inputHidden id="suppliermaterialid" value="#{supplierMaterialController.selected.suppliermaterialid}"/>   
                     <p:panelGrid columns="2" rendered="#{supplierMaterialController.selected != null}">
                         <p:outputLabel value="#{bundle.EditSupplierMaterialLabel_experiencenote}" for="experiencenote" />
                         <p:inputText id="experiencenote" value="#{supplierMaterialController.selected.experiencenote}" title="#{bundle.EditSupplierMaterialTitle_experiencenote}" />

@@ -39,22 +39,12 @@ public class SupplierMaterialController implements Serializable {
         this.selected = selected;
     }
 
-    protected void setEmbeddableKeys() {
-        selected.getSupplierMaterialPK().setMaterialmaterialid(selected.getMaterial().getMaterialid());
-        selected.getSupplierMaterialPK().setSuppliersupplierid(selected.getSupplier().getSupplierid());
-    }
-
-    protected void initializeEmbeddableKey() {
-        selected.setSupplierMaterialPK(new org.thomasmore.entity.SupplierMaterialPK());
-    }
-
     private SupplierMaterialFacade getFacade() {
         return ejbFacade;
     }
 
     public SupplierMaterial prepareCreate() {
         selected = new SupplierMaterial();
-        initializeEmbeddableKey();
         return selected;
     }
 
@@ -86,7 +76,6 @@ public class SupplierMaterialController implements Serializable {
 
     private void persist(PersistAction persistAction, String successMessage) {
         if (selected != null) {
-            setEmbeddableKeys();
             try {
                 if (persistAction != PersistAction.DELETE) {
                     getFacade().edit(selected);
@@ -112,9 +101,7 @@ public class SupplierMaterialController implements Serializable {
         }
     }
 
-    public SupplierMaterial getSupplierMaterial(org.thomasmore.entity.SupplierMaterialPK id) {
-        return getFacade().find(id);
-    }
+
 
     public List<SupplierMaterial> getItemsAvailableSelectMany() {
         return getFacade().findAll();
@@ -124,53 +111,6 @@ public class SupplierMaterialController implements Serializable {
         return getFacade().findAll();
     }
 
-    @FacesConverter(forClass = SupplierMaterial.class)
-    public static class SupplierMaterialControllerConverter implements Converter {
-
-        private static final String SEPARATOR = "#";
-        private static final String SEPARATOR_ESCAPED = "\\#";
-
-        @Override
-        public Object getAsObject(FacesContext facesContext, UIComponent component, String value) {
-            if (value == null || value.length() == 0) {
-                return null;
-            }
-            SupplierMaterialController controller = (SupplierMaterialController) facesContext.getApplication().getELResolver().
-                    getValue(facesContext.getELContext(), null, "supplierMaterialController");
-            return controller.getSupplierMaterial(getKey(value));
-        }
-
-        org.thomasmore.entity.SupplierMaterialPK getKey(String value) {
-            org.thomasmore.entity.SupplierMaterialPK key;
-            String values[] = value.split(SEPARATOR_ESCAPED);
-            key = new org.thomasmore.entity.SupplierMaterialPK();
-            key.setMaterialmaterialid(Integer.parseInt(values[0]));
-            key.setSuppliersupplierid(Integer.parseInt(values[1]));
-            return key;
-        }
-
-        String getStringKey(org.thomasmore.entity.SupplierMaterialPK value) {
-            StringBuilder sb = new StringBuilder();
-            sb.append(value.getMaterialmaterialid());
-            sb.append(SEPARATOR);
-            sb.append(value.getSuppliersupplierid());
-            return sb.toString();
-        }
-
-        @Override
-        public String getAsString(FacesContext facesContext, UIComponent component, Object object) {
-            if (object == null) {
-                return null;
-            }
-            if (object instanceof SupplierMaterial) {
-                SupplierMaterial o = (SupplierMaterial) object;
-                return getStringKey(o.getSupplierMaterialPK());
-            } else {
-                Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "object {0} is of type {1}; expected type: {2}", new Object[]{object, object.getClass().getName(), SupplierMaterial.class.getName()});
-                return null;
-            }
-        }
-
-    }
+ 
 
 }

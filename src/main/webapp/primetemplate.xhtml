@@ -19,7 +19,7 @@
     </h:head>
 
     <h:body>
-        <ui:fragment rendered="${!sessionDto.userDto.loggedIn}"><script>window.location = "../login.xhtml";</script></ui:fragment>
+        <ui:fragment rendered="${!sessionDto.userDto.loggedIn}"><script>window.location = "/project1/faces/login.xhtml";</script></ui:fragment>
         <p:growl id="growl" life="3000" />
         <p:layout fullPage="true">
             <p:layoutUnit position="north">
@@ -47,6 +47,7 @@
                                     <ul>
                                         <li><a href="/project1/faces/equipmentrent/List.xhtml">Equipment&#160;Rent</a></li>
                                         <li><a href="/project1/faces/supplier/List.xhtml">Suppliers</a></li>
+                                        <li><a href="/project1/faces/material/List.xhtml">Material</a></li>
                                         <li><a href="/project1/faces/supplierMaterial/List.xhtml">Supplier&#160;Material</a></li>
                                         <li><a href="/project1/faces/availability/List.xhtml">Availability</a></li>
                                         <li><a href="/project1/faces/warehouse/List.xhtml">Warehouse</a></li>
@@ -55,10 +56,6 @@
                                 <li><a href="#">Clients</a>
                                     <ul>
                                         <li><a href="/project1/faces/client/List.xhtml">Clients</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="#">Reservations</a>
-                                    <ul>
                                         <li><a href="/project1/faces/reservation/List.xhtml">Reservations</a></li>
                                     </ul>
                                 </li>

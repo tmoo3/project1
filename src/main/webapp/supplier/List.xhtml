@@ -16,62 +16,81 @@
 
         <ui:define name="body">
             <h:form id="SupplierListForm">
-                <p:panel header="#{bundle.ListSupplierTitle}">
-                    <p:dataTable id="datalist" value="#{supplierController.items}" var="item"
-                                 selectionMode="single" selection="#{supplierController.selected}"
-                                 paginator="true"
-                                 rowKey="#{item.supplierid}"
-                                 rows="10"
-                                 rowsPerPageTemplate="10,20,30,40,50"
-                                 >
 
-                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
-                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+                <p:dataTable id="datalist" value="#{supplierController.items}" var="item"
+                             selectionMode="single" selection="#{supplierController.selected}"
+                             paginator="true"
+                             rowKey="#{item.supplierid}"
+                             rows="10"
+                             rowsPerPageTemplate="10,20,30,40,50"
+                             >
 
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListSupplierTitle_supplierid}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.supplierid}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListSupplierTitle_address}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.address}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListSupplierTitle_bedrijfsnaam}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.bedrijfsnaam}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListSupplierTitle_contactpersoon}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.contactpersoon}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListSupplierTitle_phone}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.phone}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListSupplierTitle_zip}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.zip}"/>
-                        </p:column>
-                        <f:facet name="footer">
-                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{supplierController.prepareCreate}" update=":SupplierCreateForm" oncomplete="PF('SupplierCreateDialog').show()"/>
-                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":SupplierViewForm" oncomplete="PF('SupplierViewDialog').show()" disabled="#{empty supplierController.selected}"/>
-                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":SupplierEditForm" oncomplete="PF('SupplierEditDialog').show()" disabled="#{empty supplierController.selected}"/>
-                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{supplierController.destroy}" update=":growl,datalist" disabled="#{empty supplierController.selected}"/>
+                    <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                    <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                    <p:column sortBy="#{item.supplierid}" filterBy="#{item.supplierid}">
+                        <f:facet name="header">
+                            <h:outputText value="#{bundle.ListSupplierTitle_supplierid}"/>
                         </f:facet>
-                    </p:dataTable>
-                </p:panel>
+                        <h:outputText value="#{item.supplierid}"/>
+                    </p:column>
+                    <p:column sortBy="#{item.bedrijfsnaam}" filterBy="#{item.bedrijfsnaam}">
+                        <f:facet name="header">
+                            <h:outputText value="#{bundle.ListSupplierTitle_bedrijfsnaam}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.bedrijfsnaam}"/>
+                    </p:column>
+                    <p:column sortBy="#{item.contactpersoon}" filterBy="#{item.contactpersoon}">
+                        <f:facet name="header">
+                            <h:outputText value="#{bundle.ListSupplierTitle_contactpersoon}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.contactpersoon}"/>
+                    </p:column>
+                    <p:column sortBy="#{item.phone}" filterBy="#{item.phone}">
+                        <f:facet name="header">
+                            <h:outputText value="#{bundle.ListSupplierTitle_phone}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.phone}"/>
+                    </p:column>
+                    <p:column sortBy="#{item.address}" filterBy="#{item.address}">
+                        <f:facet name="header">
+                            <h:outputText value="#{bundle.ListSupplierTitle_address}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.address}"/>
+                    </p:column>
+                    <p:column sortBy="#{item.zip}" filterBy="#{item.zip}">
+                        <f:facet name="header">
+                            <h:outputText value="#{bundle.ListSupplierTitle_zip}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.zip}"/>
+                    </p:column>
+                    <f:facet name="footer">
+                        <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{supplierController.prepareCreate}" update=":SupplierCreateForm" oncomplete="PF('SupplierCreateDialog').show()"/>
+                        <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":SupplierViewForm" oncomplete="PF('SupplierViewDialog').show()" disabled="#{empty supplierController.selected}"/>
+                        <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":SupplierEditForm" oncomplete="PF('SupplierEditDialog').show()" disabled="#{empty supplierController.selected}"/>
+                        <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{supplierController.destroy}" update=":growl,datalist" disabled="#{empty supplierController.selected}"/>
+                    </f:facet>
+                </p:dataTable>
+                <br /><br />
+                <h:commandLink>
+                    <p:graphicImage name="img/excel.png" />
+                    <p:dataExporter type="xls" target="datalist" fileName="#{bundle.ListSupplierTitle}" pageOnly="true"/>
+                </h:commandLink>
+
+                <h:commandLink>
+                    <p:graphicImage name="img/pdf.png" />
+                    <p:dataExporter type="pdf" target="datalist" fileName="#{bundle.ListSupplierTitle}" pageOnly="true" />
+                </h:commandLink>
+
+                <h:commandLink>
+                    <p:graphicImage name="img/csv.png" />
+                    <p:dataExporter type="csv" target="datalist" fileName="#{bundle.ListSupplierTitle}" pageOnly="true" />
+                </h:commandLink>
+
+                <h:commandLink>
+                    <p:graphicImage name="img/xml.png" />
+                    <p:dataExporter type="xml" target="datalist" fileName="#{bundle.ListSupplierTitle}" pageOnly="true" />
+                </h:commandLink>
             </h:form>
 
             <ui:include src="Create.xhtml"/>

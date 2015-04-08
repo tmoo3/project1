@@ -65,6 +65,27 @@
                             <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{warehouseController.destroy}" update=":growl,datalist" disabled="#{empty warehouseController.selected}"/>
                         </f:facet>
                     </p:dataTable>
+                    <br /><br />
+                    <h:commandLink>
+                        <p:graphicImage name="img/excel.png" />
+                        <p:dataExporter type="xls" target="datalist" fileName="#{bundle.ListWarehouseTitle}" pageOnly="true"/>
+                    </h:commandLink>
+
+                    <h:commandLink>
+                        <p:graphicImage name="img/pdf.png" />
+                        <p:dataExporter type="pdf" target="datalist" fileName="#{bundle.ListWarehouseTitle}" pageOnly="true" />
+                    </h:commandLink>
+
+                    <h:commandLink>
+                        <p:graphicImage name="img/csv.png" />
+                        <p:dataExporter type="csv" target="datalist" fileName="#{bundle.ListWarehouseTitle}" pageOnly="true" />
+                    </h:commandLink>
+
+                    <h:commandLink>
+                        <p:graphicImage name="img/xml.png" />
+                        <p:dataExporter type="xml" target="datalist" fileName="#{bundle.ListWarehouseTitle}" pageOnly="true" />
+                    </h:commandLink>
+
                 </p:panel>
             </h:form>
 

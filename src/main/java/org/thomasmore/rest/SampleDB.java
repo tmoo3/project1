@@ -34,6 +34,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import org.thomasmore.entity.Setup;
 import org.thomasmore.entity.Users;
+import org.thomasmore.entity.Supplier;
+import org.thomasmore.entity.Material;
 
 
 /**
@@ -57,14 +59,29 @@ public class SampleDB {
         
         //String p = generateHash("a");
         Users userEntity = new Users();
-        userEntity.setUserid(1);
         userEntity.setUsername("a");
         userEntity.setUserpassword("a");
         objectsToSave.add(userEntity);
+        
+        Supplier supplierEntity = new Supplier();
+        supplierEntity.setAddress("Warmonderweg 5");
+        supplierEntity.setBedrijfsnaam("tennisdirect.be");
+        supplierEntity.setContactpersoon("Bestellingen Dienst");
+        supplierEntity.setZip("2171 AH Sassenheim - Nederland");
+        supplierEntity.setPhone("+32 (0) 3 6631454");
+        objectsToSave.add(supplierEntity);
+
+        Material materialEntity = new Material();
+        materialEntity.setMass(1);
+        materialEntity.setMaterialquality(1);
+        materialEntity.setMaterialquantity(100);
+        materialEntity.setMaterialtype(1);
+        materialEntity.setRentprice((double) (1.1));
+        objectsToSave.add(materialEntity);
+                
         for (Object objectsToSave1 : objectsToSave) {
             em.persist(objectsToSave1);
         }
-
     }
 
     public String generateHash(String passwordToHash) {
