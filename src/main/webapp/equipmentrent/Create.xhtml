@@ -32,7 +32,7 @@
                         <p:outputLabel value="#{bundle.CreateEquipmentrentLabel_materialid}" for="materialid" />
                         <p:selectOneMenu id="materialid" value="#{equipmentrentController.selected.materialid}" >
                             <f:selectItems value="#{materialController.itemsAvailableSelectOne}"
-                                           var="materialidItem"
+                                           var="materialidItem" itemLabel="#{materialidItem.materialtype}"
                                            itemValue="#{materialidItem}"/>
                         </p:selectOneMenu>
                     </p:panelGrid>

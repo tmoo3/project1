@@ -13,9 +13,7 @@
         <p:dialog id="ReservationCreateDlg" widgetVar="ReservationCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateReservationTitle}">
             <h:form id="ReservationCreateDlgc">
                 <c:if test="#{param.get('redirectedfromclientxhtml')==1}">
-                    <script>
-                        jQuery(document).ready(function () {document.getElementById('ReservationListForm:datalist:createButton').click();});
-                    </script>
+                    <p:outputLabel value="#{clientidpassed}"/>
                 </c:if>
             </h:form>
             <h:form id="ReservationCreateForm">
@@ -31,11 +29,11 @@
                         <p:inputText id="total" required="true" value="#{reservationController.selected.total}" title="#{bundle.CreateReservationTitle_total}" />
                         <p:outputLabel value="#{bundle.CreateReservationLabel_clientid}" for="clientid" />
 
-                        <p:selectOneMenu id="clientid" value="#{reservationController.selected.clientid}" required="true">
+                        <p:selectOneMenu id="clientid" value="#{reservationController.selected.clientid}" required="true" filter="true" filterMatchMode="startsWith">
                             <f:selectItems value="#{clientController.itemsAvailableSelectOne}"
                                            var="clientidItem" itemLabel="#{clientidItem.lastname}"
                                            itemValue="#{clientidItem}"/>
-                        </p:selectOneMenu>
+                            </p:selectOneMenu>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{reservationController.create}" value="#{bundle.Save}" update="display,:ReservationListForm:datalist,:growl" oncomplete="handleSubmit(args,'ReservationCreateDialog');"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="ReservationCreateDialog.hide()"/>

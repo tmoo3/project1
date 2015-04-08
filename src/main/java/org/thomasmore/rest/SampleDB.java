@@ -25,8 +25,12 @@ package org.thomasmore.rest;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
@@ -37,6 +41,7 @@ import org.thomasmore.entity.Users;
 import org.thomasmore.entity.Supplier;
 import org.thomasmore.entity.Material;
 import org.thomasmore.entity.Client;
+import org.thomasmore.entity.Reservation;
 
 
 /**
@@ -95,6 +100,22 @@ public class SampleDB {
         clientEntity2.setAddress("Zandpoortvest 60");
         clientEntity2.setZip("2800 Mechelen");
         objectsToSave.add(clientEntity2);
+        
+        Reservation reservationEntity = new Reservation();
+        reservationEntity.setClientid(clientEntity2);
+        reservationEntity.setDurationperminute(60);
+        try {
+            reservationEntity.setStartdate(new SimpleDateFormat("yyyy-MM-dd").parse("2015-03-30"));
+        } catch (ParseException ex) {
+            Logger.getLogger(SampleDB.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            reservationEntity.setStarttime(new SimpleDateFormat("HH:mm").parse("10:15"));
+        } catch (ParseException ex) {
+            Logger.getLogger(SampleDB.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        reservationEntity.setTotal(2.0);
+        objectsToSave.add(reservationEntity);
                 
         for (Object objectsToSave1 : objectsToSave) {
             em.persist(objectsToSave1);

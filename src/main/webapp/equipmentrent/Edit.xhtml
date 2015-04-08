@@ -36,7 +36,7 @@
                         <p:selectOneMenu id="materialid" value="#{equipmentrentController.selected.materialid}" >
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
                             <f:selectItems value="#{materialController.itemsAvailableSelectOne}"
-                                           var="materialidItem"
+                                           var="materialidItem" itemLabel="#{materialidItem.materialtype}"
                                            itemValue="#{materialidItem}"/>
                         </p:selectOneMenu>
                     </p:panelGrid>
