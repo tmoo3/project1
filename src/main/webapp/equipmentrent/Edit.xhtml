@@ -29,7 +29,7 @@
                         <p:selectOneMenu id="reservationid" value="#{equipmentrentController.selected.reservationid}" >
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
                             <f:selectItems value="#{reservationController.itemsAvailableSelectOne}"
-                                           var="reservationidItem"
+                                           var="reservationidItem" itemLabel="#{reservationidItem.clientid.lastname}"
                                            itemValue="#{reservationidItem}"/>
                         </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.EditEquipmentrentLabel_materialid}" for="materialid" />

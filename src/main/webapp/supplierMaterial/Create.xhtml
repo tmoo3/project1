@@ -18,13 +18,13 @@
                         <p:outputLabel value="#{bundle.CreateSupplierMaterialLabel_supplier}" for="supplier" />
                         <p:selectOneMenu id="supplier" required="true" value="#{supplierMaterialController.selected.supplier}" requiredMessage="#{bundle.EditSupplierMaterialRequiredMessage_supplier}">
                             <f:selectItems value="#{supplierController.itemsAvailableSelectOne}"
-                                           var="supplierItem"
+                                           var="supplierItem" itemLabel="#{supplierItem.bedrijfsnaam}"
                                            itemValue="#{supplierItem}"/>
                         </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.CreateSupplierMaterialLabel_material}" for="material" />
                         <p:selectOneMenu id="material" required="true" value="#{supplierMaterialController.selected.material}" requiredMessage="#{bundle.EditSupplierMaterialRequiredMessage_material}">
                             <f:selectItems value="#{materialController.itemsAvailableSelectOne}"
-                                           var="materialItem"
+                                           var="materialItem" itemLabel="#{materialItem.materialtype}"
                                            itemValue="#{materialItem}"/>
                         </p:selectOneMenu>
                     </p:panelGrid>

@@ -24,9 +24,9 @@
                         <p:outputLabel value="#{bundle.CreateEquipmentrentLabel_total}" for="total" />
                         <p:inputText id="total" required="true" value="#{equipmentrentController.selected.total}" title="#{bundle.CreateEquipmentrentTitle_total}" />
                         <p:outputLabel value="#{bundle.CreateEquipmentrentLabel_reservationid}" for="reservationid" />
-                        <p:selectOneMenu id="reservationid" value="#{equipmentrentController.selected.reservationid}" >
-                            <f:selectItems value="#{reservationController.itemsAvailableSelectOne}"
-                                           var="reservationidItem"
+                        <p:selectOneMenu id="reservationid" value="#{equipmentrentController.selected.reservationid}" filter="true" filterMatchMode="startsWith">
+                            <f:selectItems value="#{reservationController.itemsAvailableSelectMany}"
+                                           var="reservationidItem"  itemLabel="#{reservationidItem.clientid.lastname}"
                                            itemValue="#{reservationidItem}"/>
                         </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.CreateEquipmentrentLabel_materialid}" for="materialid" />

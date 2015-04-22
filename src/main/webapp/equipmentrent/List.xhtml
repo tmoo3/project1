@@ -16,78 +16,97 @@
 
         <ui:define name="body">
             <h:form id="EquipmentrentListForm">
-                <p:panel header="#{bundle.ListEquipmentrentTitle}">
-                    <p:dataTable id="datalist" value="#{equipmentrentController.items}" var="item"
-                                 selectionMode="single" selection="#{equipmentrentController.selected}"
-                                 paginator="true"
-                                 rowKey="#{item.equipmentrentid}"
-                                 rows="10"
-                                 rowsPerPageTemplate="10,20,30,40,50"
-                                 >
+                <p:dataTable id="datalist" value="#{equipmentrentController.items}" var="item"
+                             selectionMode="single" selection="#{equipmentrentController.selected}"
+                             paginator="true"
+                             rowKey="#{item.equipmentrentid}"
+                             rows="10"
+                             rowsPerPageTemplate="10,20,30,40,50"
+                             >
 
-                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
-                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+                    <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                    <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
 
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListEquipmentrentTitle_equipmentrentid}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.equipmentrentid}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListEquipmentrentTitle_durationperminute}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.durationperminute}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListEquipmentrentTitle_startdate}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.startdate}">
-                                <f:convertDateTime pattern="MM/dd/yyyy" />
-                            </h:outputText>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListEquipmentrentTitle_starttime}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.starttime}">
-                                <f:convertDateTime pattern="HH:mm:ss" />
-                            </h:outputText>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListEquipmentrentTitle_state}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.state}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListEquipmentrentTitle_total}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.total}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListEquipmentrentTitle_reservationid}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.reservationid}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListEquipmentrentTitle_materialid}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.materialid}"/>
-                        </p:column>
-                        <f:facet name="footer">
-                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{equipmentrentController.prepareCreate}" update=":EquipmentrentCreateForm" oncomplete="PF('EquipmentrentCreateDialog').show()"/>
-                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":EquipmentrentViewForm" oncomplete="PF('EquipmentrentViewDialog').show()" disabled="#{empty equipmentrentController.selected}"/>
-                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":EquipmentrentEditForm" oncomplete="PF('EquipmentrentEditDialog').show()" disabled="#{empty equipmentrentController.selected}"/>
-                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{equipmentrentController.destroy}" update=":growl,datalist" disabled="#{empty equipmentrentController.selected}"/>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{bundle.ListEquipmentrentTitle_equipmentrentid}"/>
                         </f:facet>
-                    </p:dataTable>
-                </p:panel>
+                        <h:outputText value="#{item.equipmentrentid}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{bundle.ListEquipmentrentTitle_durationperminute}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.durationperminute}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{bundle.ListEquipmentrentTitle_startdate}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.startdate}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{bundle.ListEquipmentrentTitle_starttime}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.starttime}">
+                            <f:convertDateTime pattern="HH:mm:ss" />
+                        </h:outputText>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{bundle.ListEquipmentrentTitle_state}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.state}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{bundle.ListEquipmentrentTitle_total}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.total}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{bundle.ListEquipmentrentTitle_reservationid}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.reservationid}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{bundle.ListEquipmentrentTitle_materialid}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.materialid}"/>
+                    </p:column>
+                    <f:facet name="footer">
+                        <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{equipmentrentController.prepareCreate}" update=":EquipmentrentCreateForm" oncomplete="PF('EquipmentrentCreateDialog').show()"/>
+                        <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":EquipmentrentViewForm" oncomplete="PF('EquipmentrentViewDialog').show()" disabled="#{empty equipmentrentController.selected}"/>
+                        <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":EquipmentrentEditForm" oncomplete="PF('EquipmentrentEditDialog').show()" disabled="#{empty equipmentrentController.selected}"/>
+                        <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{equipmentrentController.destroy}" update=":growl,datalist" disabled="#{empty equipmentrentController.selected}"/>
+                    </f:facet>
+                </p:dataTable>
+                <br /><br />
+                <h:commandLink>
+                    <p:graphicImage name="img/excel.png" />
+                    <p:dataExporter type="xls" target="datalist" fileName="#{bundle.ListEquipmentrentTitle}" pageOnly="true"/>
+                </h:commandLink>
+
+                <h:commandLink>
+                    <p:graphicImage name="img/pdf.png" />
+                    <p:dataExporter type="pdf" target="datalist" fileName="#{bundle.ListEquipmentrentTitle}" pageOnly="true" />
+                </h:commandLink>
+
+                <h:commandLink>
+                    <p:graphicImage name="img/csv.png" />
+                    <p:dataExporter type="csv" target="datalist" fileName="#{bundle.ListEquipmentrentTitle}" pageOnly="true" />
+                </h:commandLink>
+
+                <h:commandLink>
+                    <p:graphicImage name="img/xml.png" />
+                    <p:dataExporter type="xml" target="datalist" fileName="#{bundle.ListEquipmentrentTitle}" pageOnly="true" />
+                </h:commandLink>
+
             </h:form>
 
             <ui:include src="Create.xhtml"/>

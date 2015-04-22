@@ -20,14 +20,14 @@
                         <p:selectOneMenu id="supplier" value="#{supplierMaterialController.selected.supplier}" required="true" requiredMessage="#{bundle.EditSupplierMaterialRequiredMessage_supplier}">
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
                             <f:selectItems value="#{supplierController.itemsAvailableSelectOne}"
-                                           var="supplierItem"
+                                           var="supplierItem" itemLabel="#{supplierItem.bedrijfsnaam}"
                                            itemValue="#{supplierItem}"/>
                         </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.EditSupplierMaterialLabel_material}" for="material" />
                         <p:selectOneMenu id="material" value="#{supplierMaterialController.selected.material}" required="true" requiredMessage="#{bundle.EditSupplierMaterialRequiredMessage_material}">
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
                             <f:selectItems value="#{materialController.itemsAvailableSelectOne}"
-                                           var="materialItem"
+                                           var="materialItem" itemLabel="#{materialItem.materialtype}"
                                            itemValue="#{materialItem}"/>
                         </p:selectOneMenu>
                     </p:panelGrid>
