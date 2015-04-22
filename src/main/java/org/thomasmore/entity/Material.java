@@ -17,6 +17,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -41,12 +42,16 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Material.findByMaterialtype", query = "SELECT m FROM Material m WHERE m.materialtype = :materialtype"),
     @NamedQuery(name = "Material.findByRentprice", query = "SELECT m FROM Material m WHERE m.rentprice = :rentprice")})
 public class Material implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "MATERIALID")
     private Integer materialid;
+    @Lob
+    @Column(name = "PICTURE")
+    private byte[] picture;
     @Column(name = "MASS")
     private Integer mass;
     @Column(name = "MATERIALQUALITY")
@@ -125,6 +130,14 @@ public class Material implements Serializable {
         this.rentprice = rentprice;
     }
 
+    public byte[] getPicture() {
+        return picture;
+    }
+
+    public void setPicture(byte[] picture) {
+        this.picture = picture;
+    }
+
     @XmlTransient
     public Collection<Warehouse> getWarehouseCollection() {
         return warehouseCollection;
@@ -185,5 +198,5 @@ public class Material implements Serializable {
     public String toString() {
         return "org.thomasmore.entity.Material[ materialid=" + materialid + " ]";
     }
-    
+
 }

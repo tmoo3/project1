@@ -10,11 +10,9 @@
     <ui:composition>
 
         <p:dialog id="MaterialCreateDlg" widgetVar="MaterialCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateMaterialTitle}">
-            <h:form id="MaterialCreateForm">
+            <h:form id="MaterialCreateForm" enctype="multipart/form-data">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{materialController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreateMaterialLabel_materialid}" for="materialid" />
-                        <p:inputText id="materialid" value="#{materialController.selected.materialid}" title="#{bundle.CreateMaterialTitle_materialid}" required="true" requiredMessage="#{bundle.CreateMaterialRequiredMessage_materialid}"/>
                         <p:outputLabel value="#{bundle.CreateMaterialLabel_mass}" for="mass" />
                         <p:inputText id="mass" value="#{materialController.selected.mass}" title="#{bundle.CreateMaterialTitle_mass}" />
                         <p:outputLabel value="#{bundle.CreateMaterialLabel_materialquality}" for="materialquality" />
@@ -25,6 +23,8 @@
                         <p:inputText id="materialtype" value="#{materialController.selected.materialtype}" title="#{bundle.CreateMaterialTitle_materialtype}" />
                         <p:outputLabel value="#{bundle.CreateMaterialLabel_rentprice}" for="rentprice" />
                         <p:inputText id="rentprice" value="#{materialController.selected.rentprice}" title="#{bundle.CreateMaterialTitle_rentprice}" />
+                        <p:outputLabel value="#{bundle.CreateMaterialLabel_picture}" for="picture" />
+                        <p:fileUpload value="#{materialController.selected.picture}" id="picture" fileUploadListener="#{sysManager.handleFileUpload}" mode="advanced" dragDropSupport="false" sizeLimit="100000" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
                     </p:panelGrid>
                     <p:commandButton actionListener="#{materialController.create}" value="#{bundle.Save}" update="display,:MaterialListForm:datalist,:growl" oncomplete="handleSubmit(args,'MaterialCreateDialog');"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="MaterialCreateDialog.hide()"/>

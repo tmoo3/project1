@@ -16,7 +16,6 @@
 
         <ui:define name="body">
             <h:form id="WarehouseListForm">
-                <p:panel header="#{bundle.ListWarehouseTitle}">
                     <p:dataTable id="datalist" value="#{warehouseController.items}" var="item"
                                  selectionMode="single" selection="#{warehouseController.selected}"
                                  paginator="true"
@@ -85,8 +84,6 @@
                         <p:graphicImage name="img/xml.png" />
                         <p:dataExporter type="xml" target="datalist" fileName="#{bundle.ListWarehouseTitle}" pageOnly="true" />
                     </h:commandLink>
-
-                </p:panel>
             </h:form>
 
             <ui:include src="Create.xhtml"/>

@@ -20,7 +20,9 @@
                 <c:if test="#{param.get('redirectedfromclientxhtml')==1}">
                     <h:inputHidden id="clientidpassed" value="#{param.get('clientidpassed')}"/> 
                     <script>
-                        jQuery(document).ready(function () {document.getElementById('ReservationListForm:datalist:createButton').click();});
+                        jQuery(document).ready(function () {
+                            document.getElementById('ReservationListForm:datalist:createButton').click();
+                        });
                     </script>
                 </c:if>
             </h:form>
@@ -88,6 +90,27 @@
                         <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{reservationController.destroy}" update=":growl,datalist" disabled="#{empty reservationController.selected}"/>
                     </f:facet>
                 </p:dataTable>
+                <br /><br />
+                <h:commandLink>
+                    <p:graphicImage name="img/excel.png" />
+                    <p:dataExporter type="xls" target="datalist" fileName="#{bundle.ListReservationTitle}" pageOnly="true"/>
+                </h:commandLink>
+
+                <h:commandLink>
+                    <p:graphicImage name="img/pdf.png" />
+                    <p:dataExporter type="pdf" target="datalist" fileName="#{bundle.ListReservationTitle}" pageOnly="true" />
+                </h:commandLink>
+
+                <h:commandLink>
+                    <p:graphicImage name="img/csv.png" />
+                    <p:dataExporter type="csv" target="datalist" fileName="#{bundle.ListReservationTitle}" pageOnly="true" />
+                </h:commandLink>
+
+                <h:commandLink>
+                    <p:graphicImage name="img/xml.png" />
+                    <p:dataExporter type="xml" target="datalist" fileName="#{bundle.ListReservationTitle}" pageOnly="true" />
+                </h:commandLink>
+
             </h:form>
             <ui:include src="Create.xhtml"/>
             <ui:include src="Edit.xhtml"/>

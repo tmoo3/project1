@@ -8,9 +8,9 @@
       xmlns:p="http://primefaces.org/ui">
 
     <ui:composition template="/primetemplate.xhtml">
-<!--
-https://blogs.oracle.com/geertjan/entry/sortable_filterable_primefaces_datatable
--->
+        <!--
+        https://blogs.oracle.com/geertjan/entry/sortable_filterable_primefaces_datatable
+        -->
 
         <ui:define name="title">
             <h:outputText value="#{bundle.ListAvailabilityTitle}"></h:outputText>
@@ -18,66 +18,84 @@ https://blogs.oracle.com/geertjan/entry/sortable_filterable_primefaces_datatable
 
         <ui:define name="body">
             <h:form id="AvailabilityListForm">
-                <p:panel header="#{bundle.ListAvailabilityTitle}">
-                    <p:dataTable id="datalist" value="#{availabilityController.items}" var="item"
-                                 selectionMode="single" selection="#{availabilityController.selected}"
-                                 paginator="true"
-                                 rowKey="#{item.availabilityid}"
-                                 rows="10"
-                                 rowsPerPageTemplate="10,20,30,40,50"
-                                 >
+                <p:dataTable id="datalist" value="#{availabilityController.items}" var="item"
+                             selectionMode="single" selection="#{availabilityController.selected}"
+                             paginator="true"
+                             rowKey="#{item.availabilityid}"
+                             rows="10"
+                             rowsPerPageTemplate="10,20,30,40,50"
+                             >
 
-                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
-                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+                    <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                    <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
 
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListAvailabilityTitle_availabilityid}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.availabilityid}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListAvailabilityTitle_durationperminute}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.durationperminute}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListAvailabilityTitle_startdate}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.startdate}">
-                                <f:convertDateTime pattern="MM/dd/yyyy" />
-                            </h:outputText>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListAvailabilityTitle_starttime}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.starttime}">
-                                <f:convertDateTime pattern="HH:mm:ss" />
-                            </h:outputText>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListAvailabilityTitle_supplierid}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.supplierid}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListAvailabilityTitle_materialid}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.materialid}"/>
-                        </p:column>
-                        <f:facet name="footer">
-                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{availabilityController.prepareCreate}" update=":AvailabilityCreateForm" oncomplete="PF('AvailabilityCreateDialog').show()"/>
-                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":AvailabilityViewForm" oncomplete="PF('AvailabilityViewDialog').show()" disabled="#{empty availabilityController.selected}"/>
-                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":AvailabilityEditForm" oncomplete="PF('AvailabilityEditDialog').show()" disabled="#{empty availabilityController.selected}"/>
-                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{availabilityController.destroy}" update=":growl,datalist" disabled="#{empty availabilityController.selected}"/>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{bundle.ListAvailabilityTitle_availabilityid}"/>
                         </f:facet>
-                    </p:dataTable>
-                </p:panel>
+                        <h:outputText value="#{item.availabilityid}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{bundle.ListAvailabilityTitle_durationperminute}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.durationperminute}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{bundle.ListAvailabilityTitle_startdate}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.startdate}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{bundle.ListAvailabilityTitle_starttime}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.starttime}">
+                            <f:convertDateTime pattern="HH:mm:ss" />
+                        </h:outputText>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{bundle.ListAvailabilityTitle_supplierid}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.supplierid}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{bundle.ListAvailabilityTitle_materialid}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.materialid}"/>
+                    </p:column>
+                    <f:facet name="footer">
+                        <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{availabilityController.prepareCreate}" update=":AvailabilityCreateForm" oncomplete="PF('AvailabilityCreateDialog').show()"/>
+                        <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":AvailabilityViewForm" oncomplete="PF('AvailabilityViewDialog').show()" disabled="#{empty availabilityController.selected}"/>
+                        <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":AvailabilityEditForm" oncomplete="PF('AvailabilityEditDialog').show()" disabled="#{empty availabilityController.selected}"/>
+                        <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{availabilityController.destroy}" update=":growl,datalist" disabled="#{empty availabilityController.selected}"/>
+                    </f:facet>
+                </p:dataTable>
+                <br /><br />
+                <h:commandLink>
+                    <p:graphicImage name="img/excel.png" />
+                    <p:dataExporter type="xls" target="datalist" fileName="#{bundle.ListAvailabilityTitle}" pageOnly="true"/>
+                </h:commandLink>
+
+                <h:commandLink>
+                    <p:graphicImage name="img/pdf.png" />
+                    <p:dataExporter type="pdf" target="datalist" fileName="#{bundle.ListAvailabilityTitle}" pageOnly="true" />
+                </h:commandLink>
+
+                <h:commandLink>
+                    <p:graphicImage name="img/csv.png" />
+                    <p:dataExporter type="csv" target="datalist" fileName="#{bundle.ListAvailabilityTitle}" pageOnly="true" />
+                </h:commandLink>
+
+                <h:commandLink>
+                    <p:graphicImage name="img/xml.png" />
+                    <p:dataExporter type="xml" target="datalist" fileName="#{bundle.ListAvailabilityTitle}" pageOnly="true" />
+                </h:commandLink>
             </h:form>
 
             <ui:include src="Create.xhtml"/>
