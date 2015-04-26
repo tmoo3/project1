@@ -86,6 +86,7 @@ public class LoginController {
      }
      */
     public String getPasswordByName(String userName) {
+        //First we define the user as null and then a try-catch to trap the error when no result is returned.
         Users u = null;
         try {
             u = (Users) em.createNamedQuery("Users.findByUsername").setParameter("username", userName).getSingleResult();
