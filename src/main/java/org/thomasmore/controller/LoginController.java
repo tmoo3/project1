@@ -65,7 +65,7 @@ public class LoginController {
     }
 
     /* Will be using NamedQuery but we may also use NativeQuery and SQL commands :) .
-    public String getPasswordByName(String userName) {
+     public String getPasswordByName(String userName) {
      String namequery = "SELECT USERPASSWORD FROM USERS u WHERE u.USERNAME='" + userName + "'";
      Query query = em.createNativeQuery(namequery);
      try {
@@ -86,7 +86,15 @@ public class LoginController {
      }
      */
     public String getPasswordByName(String userName) {
-        Users u = (Users) em.createNamedQuery("Users.findByUsername").setParameter("username", userName).getSingleResult();
+        Users u = null;
+        try {
+            u = (Users) em.createNamedQuery("Users.findByUsername").setParameter("username", userName).getSingleResult();
+        } catch (NoResultException e) {
+            FacesContext facesContext = FacesContext.getCurrentInstance();
+            FacesMessage facesMessage = new FacesMessage("Invalid login. Wrong username or password!");
+            facesContext.addMessage(null, facesMessage);
+            return null;
+        }
         try {
             String myuser = u.getUserpassword();
             if (myuser.length() > 0) {
