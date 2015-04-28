@@ -92,7 +92,7 @@ public class LoginController {
             u = (Users) em.createNamedQuery("Users.findByUsername").setParameter("username", userName).getSingleResult();
         } catch (NoResultException e) {
             FacesContext facesContext = FacesContext.getCurrentInstance();
-            FacesMessage facesMessage = new FacesMessage("Invalid login. Empty username or password!");
+            FacesMessage facesMessage = new FacesMessage("Invalid login. Wrong username or password!");
             facesContext.addMessage(null, facesMessage);
             return null;
         }
@@ -114,8 +114,9 @@ public class LoginController {
         up = getPasswordByName(dto.getName());
         if (up == null) {
             FacesContext facesContext = FacesContext.getCurrentInstance();
-            FacesMessage facesMessage = new FacesMessage("Invalid login. Wrong username or password!");
-            facesContext.addMessage(null, facesMessage);
+            //No extra message is needed!
+            //FacesMessage facesMessage = new FacesMessage("Invalid login. Wrong username or password!");
+            //facesContext.addMessage(null, facesMessage);
             return null;
         } else {
             if (up.equals(generateHash(dto.getPassword()))) {
