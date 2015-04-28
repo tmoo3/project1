@@ -44,10 +44,10 @@ public class SupplierMaterial implements Serializable {
     @Column(name = "EXPERIENCENOTE")
     private String experiencenote;
     @JoinColumn(name = "SUPPLIERSUPPLIERID", referencedColumnName = "SUPPLIERID", insertable = false, updatable = false)
-    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Supplier supplier;
     @JoinColumn(name = "MATERIALMATERIALID", referencedColumnName = "MATERIALID", insertable = false, updatable = false)
-    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Material material;
 
     public SupplierMaterial() {

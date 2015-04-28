@@ -59,7 +59,7 @@ public class Client implements Serializable {
     @Size(max = 255)
     @Column(name = "ZIP")
     private String zip;
-    @OneToMany(mappedBy = "clientid", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "clientid", fetch = FetchType.LAZY)
     private Collection<Reservation> reservationCollection;
 
     public Client() {

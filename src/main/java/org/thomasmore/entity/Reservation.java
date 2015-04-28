@@ -59,9 +59,9 @@ public class Reservation implements Serializable {
     @Column(name = "TOTAL")
     private Double total;
     @JoinColumn(name = "CLIENTID", referencedColumnName = "CLIENTID")
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     private Client clientid;
-    @OneToMany(mappedBy = "reservationid", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "reservationid", fetch = FetchType.LAZY)
     private Collection<Equipmentrent> equipmentrentCollection;
 
     public Reservation() {

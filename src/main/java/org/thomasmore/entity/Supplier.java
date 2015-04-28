@@ -61,9 +61,9 @@ public class Supplier implements Serializable {
     @Size(max = 255)
     @Column(name = "ZIP")
     private String zip;
-    @OneToMany(mappedBy = "supplierid", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "supplierid", fetch = FetchType.LAZY)
     private Collection<Availability> availabilityCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "supplier", fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "supplier", fetch = FetchType.LAZY)
     private Collection<SupplierMaterial> supplierMaterialCollection;
 
     public Supplier() {

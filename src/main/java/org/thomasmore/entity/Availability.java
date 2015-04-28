@@ -52,10 +52,10 @@ public class Availability implements Serializable {
     @Temporal(TemporalType.TIME)
     private Date starttime;
     @JoinColumn(name = "SUPPLIERID", referencedColumnName = "SUPPLIERID")
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     private Supplier supplierid;
     @JoinColumn(name = "MATERIALID", referencedColumnName = "MATERIALID")
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     private Material materialid;
 
     public Availability() {

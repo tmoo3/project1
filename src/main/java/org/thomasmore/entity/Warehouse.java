@@ -55,7 +55,7 @@ public class Warehouse implements Serializable {
     @Size(max = 255)
     @Column(name = "ZIP")
     private String zip;
-    @ManyToMany(mappedBy = "warehouseCollection", fetch = FetchType.EAGER)
+    @ManyToMany(mappedBy = "warehouseCollection", fetch = FetchType.LAZY)
     private Collection<Material> materialCollection;
 
     public Warehouse() {

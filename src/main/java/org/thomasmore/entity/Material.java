@@ -66,13 +66,13 @@ public class Material implements Serializable {
     @JoinTable(name = "MATERIAL_STOCKAGE", joinColumns = {
         @JoinColumn(name = "MATERIALID", referencedColumnName = "MATERIALID")}, inverseJoinColumns = {
         @JoinColumn(name = "WAREHOUSEID", referencedColumnName = "WAREHOUSEID")})
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.LAZY)
     private Collection<Warehouse> warehouseCollection;
-    @OneToMany(mappedBy = "materialid", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "materialid", fetch = FetchType.LAZY)
     private Collection<Availability> availabilityCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "material", fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "material", fetch = FetchType.LAZY)
     private Collection<SupplierMaterial> supplierMaterialCollection;
-    @OneToMany(mappedBy = "materialid", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "materialid", fetch = FetchType.LAZY)
     private Collection<Equipmentrent> equipmentrentCollection;
 
     public Material() {

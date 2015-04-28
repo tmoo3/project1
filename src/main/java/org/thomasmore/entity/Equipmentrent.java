@@ -61,10 +61,10 @@ public class Equipmentrent implements Serializable {
     @Column(name = "TOTAL")
     private Double total;
     @JoinColumn(name = "RESERVATIONID", referencedColumnName = "RESERVATIONID")
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     private Reservation reservationid;
     @JoinColumn(name = "MATERIALID", referencedColumnName = "MATERIALID")
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     private Material materialid;
 
     public Equipmentrent() {
