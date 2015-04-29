@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      template="./common/template.xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ArrangementtypeCreateDlg" widgetVar="ArrangementtypeCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateArrangementtypeTitle}">
+            <h:form id="ArrangementtypeCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{arrangementtypeController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateArrangementtypeLabel_arrangementtypeid}" for="arrangementtypeid" />
+                        <p:inputText id="arrangementtypeid" value="#{arrangementtypeController.selected.arrangementtypeid}" title="#{bundle.CreateArrangementtypeTitle_arrangementtypeid}" required="true" requiredMessage="#{bundle.CreateArrangementtypeRequiredMessage_arrangementtypeid}"/>
+                        <p:outputLabel value="#{bundle.CreateArrangementtypeLabel_arrangementtype}" for="arrangementtype" />
+                        <p:inputText id="arrangementtype" value="#{arrangementtypeController.selected.arrangementtype}" title="#{bundle.CreateArrangementtypeTitle_arrangementtype}" required="true" requiredMessage="#{bundle.CreateArrangementtypeRequiredMessage_arrangementtype}"/>
+                        <p:outputLabel value="#{bundle.CreateArrangementtypeLabel_arrangement}" for="arrangement" />
+                        <p:selectOneMenu id="arrangement" value="#{arrangementtypeController.selected.arrangement}" >
+                            <f:selectItems value="#{arrangementController.itemsAvailableSelectOne}"
+                                           var="arrangementItem"
+                                           itemValue="#{arrangementItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{arrangementtypeController.create}" value="#{bundle.Save}" update="display,:ArrangementtypeListForm:datalist,:growl" oncomplete="handleSubmit(args,'ArrangementtypeCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ArrangementtypeCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

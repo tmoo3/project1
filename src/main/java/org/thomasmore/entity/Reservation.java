@@ -16,6 +16,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -41,6 +42,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Reservation.findByStarttime", query = "SELECT r FROM Reservation r WHERE r.starttime = :starttime"),
     @NamedQuery(name = "Reservation.findByTotal", query = "SELECT r FROM Reservation r WHERE r.total = :total")})
 public class Reservation implements Serializable {
+    @ManyToMany(mappedBy = "reservationCollection", fetch = FetchType.LAZY)
+    private Collection<Arrangement> arrangementCollection;
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -151,6 +154,15 @@ public class Reservation implements Serializable {
     @Override
     public String toString() {
         return "org.thomasmore.entity.Reservation[ reservationid=" + reservationid + " ]";
+    }
+
+    @XmlTransient
+    public Collection<Arrangement> getArrangementCollection() {
+        return arrangementCollection;
+    }
+
+    public void setArrangementCollection(Collection<Arrangement> arrangementCollection) {
+        this.arrangementCollection = arrangementCollection;
     }
     
 }

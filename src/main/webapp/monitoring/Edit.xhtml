@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      template="./common/template.xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="MonitoringEditDlg" widgetVar="MonitoringEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditMonitoringTitle}">
+            <h:form id="MonitoringEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{monitoringController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditMonitoringLabel_monitoringstartdate}" for="monitoringstartdate" />
+                        <p:calendar id="monitoringstartdate" pattern="MM/dd/yyyy" value="#{monitoringController.selected.monitoringstartdate}" title="#{bundle.EditMonitoringTitle_monitoringstartdate}" required="true" requiredMessage="#{bundle.EditMonitoringRequiredMessage_monitoringstartdate}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditMonitoringLabel_monitoringstarttime}" for="monitoringstarttime" />
+                        <p:calendar id="monitoringstarttime" pattern="HH:mm:ss" value="#{monitoringController.selected.monitoringstarttime}" title="#{bundle.EditMonitoringTitle_monitoringstarttime}" required="true" requiredMessage="#{bundle.EditMonitoringRequiredMessage_monitoringstarttime}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditMonitoringLabel_monitoringdurationperminute}" for="monitoringdurationperminute" />
+                        <p:inputText id="monitoringdurationperminute" value="#{monitoringController.selected.monitoringdurationperminute}" title="#{bundle.EditMonitoringTitle_monitoringdurationperminute}" required="true" requiredMessage="#{bundle.EditMonitoringRequiredMessage_monitoringdurationperminute}"/>
+                        <p:outputLabel value="#{bundle.EditMonitoringLabel_monitor}" for="monitor" />
+                        <p:selectOneMenu id="monitor" value="#{monitoringController.selected.monitor}" required="true" requiredMessage="#{bundle.EditMonitoringRequiredMessage_monitor}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{monitorController.itemsAvailableSelectOne}"
+                                           var="monitorItem"
+                                           itemValue="#{monitorItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditMonitoringLabel_arrangement}" for="arrangement" />
+                        <p:selectOneMenu id="arrangement" value="#{monitoringController.selected.arrangement}" required="true" requiredMessage="#{bundle.EditMonitoringRequiredMessage_arrangement}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{arrangementController.itemsAvailableSelectOne}"
+                                           var="arrangementItem"
+                                           itemValue="#{arrangementItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{monitoringController.update}" value="#{bundle.Save}" update="display,:MonitoringListForm:datalist,:growl" oncomplete="handleSubmit(args, 'MonitoringEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="MonitoringEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      template="./common/template.xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="MonitorCreateDlg" widgetVar="MonitorCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateMonitorTitle}">
+            <h:form id="MonitorCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{monitorController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateMonitorLabel_monitorname}" for="monitorname" />
+                        <p:inputText id="monitorname" value="#{monitorController.selected.monitorname}" title="#{bundle.CreateMonitorTitle_monitorname}" required="true" requiredMessage="#{bundle.CreateMonitorRequiredMessage_monitorname}"/>
+                        <p:outputLabel value="#{bundle.CreateMonitorLabel_monitoremail}" for="monitoremail" />
+                        <p:inputText id="monitoremail" value="#{monitorController.selected.monitoremail}" title="#{bundle.CreateMonitorTitle_monitoremail}" required="true" requiredMessage="#{bundle.CreateMonitorRequiredMessage_monitoremail}"/>
+                        <p:outputLabel value="#{bundle.CreateMonitorLabel_monitorphone}" for="monitorphone" />
+                        <p:inputText id="monitorphone" value="#{monitorController.selected.monitorphone}" title="#{bundle.CreateMonitorTitle_monitorphone}" required="true" requiredMessage="#{bundle.CreateMonitorRequiredMessage_monitorphone}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{monitorController.create}" value="#{bundle.Save}" update="display,:MonitorListForm:datalist,:growl" oncomplete="handleSubmit(args,'MonitorCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="MonitorCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

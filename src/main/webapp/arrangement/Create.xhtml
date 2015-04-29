@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      template="./common/template.xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ArrangementCreateDlg" widgetVar="ArrangementCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateArrangementTitle}">
+            <h:form id="ArrangementCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{arrangementController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateArrangementLabel_arrangementid}" for="arrangementid" />
+                        <p:inputText id="arrangementid" value="#{arrangementController.selected.arrangementid}" title="#{bundle.CreateArrangementTitle_arrangementid}" required="true" requiredMessage="#{bundle.CreateArrangementRequiredMessage_arrangementid}"/>
+                        <p:outputLabel value="#{bundle.CreateArrangementLabel_arrangementstartdate}" for="arrangementstartdate" />
+                        <p:calendar id="arrangementstartdate" pattern="MM/dd/yyyy" value="#{arrangementController.selected.arrangementstartdate}" title="#{bundle.EditArrangementTitle_arrangementstartdate}" required="true" requiredMessage="#{bundle.EditArrangementRequiredMessage_arrangementstartdate}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateArrangementLabel_arrangementstarttime}" for="arrangementstarttime" />
+                        <p:calendar id="arrangementstarttime" pattern="HH:mm:ss" value="#{arrangementController.selected.arrangementstarttime}" title="#{bundle.EditArrangementTitle_arrangementstarttime}" required="true" requiredMessage="#{bundle.EditArrangementRequiredMessage_arrangementstarttime}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateArrangementLabel_arrangementdurationperminute}" for="arrangementdurationperminute" />
+                        <p:inputText id="arrangementdurationperminute" value="#{arrangementController.selected.arrangementdurationperminute}" title="#{bundle.CreateArrangementTitle_arrangementdurationperminute}" required="true" requiredMessage="#{bundle.CreateArrangementRequiredMessage_arrangementdurationperminute}"/>
+                        <p:outputLabel value="#{bundle.CreateArrangementLabel_arrangementtype}" for="arrangementtype" />
+                        <p:selectOneMenu id="arrangementtype" value="#{arrangementController.selected.arrangementtype}" required="true" requiredMessage="#{bundle.EditArrangementRequiredMessage_arrangementtype}">
+                            <f:selectItems value="#{arrangementtypeController.itemsAvailableSelectOne}"
+                                           var="arrangementtypeItem"
+                                           itemValue="#{arrangementtypeItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{arrangementController.create}" value="#{bundle.Save}" update="display,:ArrangementListForm:datalist,:growl" oncomplete="handleSubmit(args,'ArrangementCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ArrangementCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

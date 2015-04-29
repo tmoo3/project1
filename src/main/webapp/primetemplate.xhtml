@@ -43,33 +43,41 @@
                                 <ul class="nav navbar-nav navbar-right">
                                     <!-- Hide all the links if the user has not logged in! -->
                                     <ui:fragment rendered="${sessionDto.userDto.loggedIn}"> 
-                                <li><a href="#">Material Management</a>
-                                    <ul>
-                                        <li><a href="/project1/faces/equipmentrent/List.xhtml">Equipment&#160;Rent</a></li>
-                                        <li><a href="/project1/faces/supplier/List.xhtml">Suppliers</a></li>
-                                        <li><a href="/project1/faces/material/List.xhtml">Material</a></li>
-                                        <li><a href="/project1/faces/supplierMaterial/List.xhtml">Supplier&#160;Material</a></li>
-                                        <li><a href="/project1/faces/availability/List.xhtml">Availability</a></li>
-                                        <li><a href="/project1/faces/warehouse/List.xhtml">Warehouse</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="#">Clients</a>
-                                    <ul>
-                                        <li><a href="/project1/faces/client/List.xhtml">Clients</a></li>
-                                        <li><a href="/project1/faces/reservation/List.xhtml">Reservations</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="#">Admin</a>
-                                    <ul>
-                                        <li><a href="/project1/faces/setup/List.xhtml">Setup</a></li>                                        
-                                        <li><a href="/project1/faces/users/List.xhtml">Users</a></li>
-                                    </ul>
-                                </li>   
-                                <li>
-                                    <!-- This is true for all pages implementing the template, so we did not have a specific controller for the template.--> 
-                                    <h:commandLink action="${login.logout()}">Logout</h:commandLink>
-                                </li>
-                            </ui:fragment>
+                                        <li><a href="#">Arrangements</a>
+                                            <ul>
+                                                <li><a href="/project1/faces/arrangementtype/List.xhtml">Arrangement&#160;Types</a></li>
+                                                <li><a href="/project1/faces/arrangement/List.xhtml">Arrangements</a></li>
+                                                <li><a href="/project1/faces/monitor/List.xhtml">Monitors</a></li>
+                                                <li><a href="/project1/faces/monitoring/List.xhtml">Monitoring</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="#">Material Management</a>
+                                            <ul>
+                                                <li><a href="/project1/faces/equipmentrent/List.xhtml">Equipment&#160;Rent</a></li>
+                                                <li><a href="/project1/faces/supplier/List.xhtml">Suppliers</a></li>
+                                                <li><a href="/project1/faces/material/List.xhtml">Material</a></li>
+                                                <li><a href="/project1/faces/supplierMaterial/List.xhtml">Supplier&#160;Material</a></li>
+                                                <li><a href="/project1/faces/availability/List.xhtml">Availability</a></li>
+                                                <li><a href="/project1/faces/warehouse/List.xhtml">Warehouse</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="#">Clients</a>
+                                            <ul>
+                                                <li><a href="/project1/faces/client/List.xhtml">Clients</a></li>
+                                                <li><a href="/project1/faces/reservation/List.xhtml">Reservations</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="#">Admin</a>
+                                            <ul>
+                                                <li><a href="/project1/faces/setup/List.xhtml">Setup</a></li>                                        
+                                                <li><a href="/project1/faces/users/List.xhtml">Users</a></li>
+                                            </ul>
+                                        </li>   
+                                        <li>
+                                            <!-- This is true for all pages implementing the template, so we did not have a specific controller for the template.--> 
+                                            <h:commandLink action="${login.logout()}">Logout</h:commandLink>
+                                        </li>
+                                    </ui:fragment>
                                     <ui:fragment rendered="${!sessionDto.userDto.loggedIn}">
                                         <li><a href="/project1/faces/login.xhtml">Login</a></li>
                                     </ui:fragment>

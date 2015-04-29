@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      template="./common/template.xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/primetemplate.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListArrangementTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form id="ArrangementListForm">
+                    <p:dataTable id="datalist" value="#{arrangementController.items}" var="item"
+                                 selectionMode="single" selection="#{arrangementController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.arrangementid}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 >
+
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListArrangementTitle_arrangementid}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.arrangementid}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListArrangementTitle_arrangementstartdate}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.arrangementstartdate}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListArrangementTitle_arrangementstarttime}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.arrangementstarttime}">
+                                <f:convertDateTime pattern="HH:mm:ss" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListArrangementTitle_arrangementdurationperminute}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.arrangementdurationperminute}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListArrangementTitle_arrangementtype}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.arrangementtype}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{arrangementController.prepareCreate}" update=":ArrangementCreateForm" oncomplete="PF('ArrangementCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":ArrangementViewForm" oncomplete="PF('ArrangementViewDialog').show()" disabled="#{empty arrangementController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":ArrangementEditForm" oncomplete="PF('ArrangementEditDialog').show()" disabled="#{empty arrangementController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{arrangementController.destroy}" update=":growl,datalist" disabled="#{empty arrangementController.selected}"/>
+                        </f:facet>
+                    </p:dataTable>
+
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      template="./common/template.xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="MonitoringViewDlg" widgetVar="MonitoringViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewMonitoringTitle}">
+            <h:form id="MonitoringViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{monitoringController.selected != null}">
+                        <h:outputText value="#{bundle.ViewMonitoringLabel_monitoringstartdate}"/>
+                        <h:outputText value="#{monitoringController.selected.monitoringstartdate}" title="#{bundle.ViewMonitoringTitle_monitoringstartdate}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewMonitoringLabel_monitoringstarttime}"/>
+                        <h:outputText value="#{monitoringController.selected.monitoringstarttime}" title="#{bundle.ViewMonitoringTitle_monitoringstarttime}">
+                            <f:convertDateTime pattern="HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewMonitoringLabel_monitoringdurationperminute}"/>
+                        <h:outputText value="#{monitoringController.selected.monitoringdurationperminute}" title="#{bundle.ViewMonitoringTitle_monitoringdurationperminute}"/>
+                        <h:outputText value="#{bundle.ViewMonitoringLabel_monitor}"/>
+                        <h:outputText value="#{monitoringController.selected.monitor}" title="#{bundle.ViewMonitoringTitle_monitor}"/>
+                        <h:outputText value="#{bundle.ViewMonitoringLabel_arrangement}"/>
+                        <h:outputText value="#{monitoringController.selected.arrangement}" title="#{bundle.ViewMonitoringTitle_arrangement}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="MonitoringViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

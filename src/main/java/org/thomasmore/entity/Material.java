@@ -42,6 +42,9 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Material.findByMaterialtype", query = "SELECT m FROM Material m WHERE m.materialtype = :materialtype"),
     @NamedQuery(name = "Material.findByRentprice", query = "SELECT m FROM Material m WHERE m.rentprice = :rentprice")})
 public class Material implements Serializable {
+    @Lob
+    @Column(name = "PICTURE")
+    private Serializable picture;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -49,9 +52,6 @@ public class Material implements Serializable {
     @Basic(optional = false)
     @Column(name = "MATERIALID")
     private Integer materialid;
-    @Lob
-    @Column(name = "PICTURE")
-    private byte[] picture;
     @Column(name = "MASS")
     private Integer mass;
     @Column(name = "MATERIALQUALITY")
@@ -130,13 +130,6 @@ public class Material implements Serializable {
         this.rentprice = rentprice;
     }
 
-    public byte[] getPicture() {
-        return picture;
-    }
-
-    public void setPicture(byte[] picture) {
-        this.picture = picture;
-    }
 
     @XmlTransient
     public Collection<Warehouse> getWarehouseCollection() {
@@ -197,6 +190,14 @@ public class Material implements Serializable {
     @Override
     public String toString() {
         return "org.thomasmore.entity.Material[ materialid=" + materialid + " ]";
+    }
+
+    public Serializable getPicture() {
+        return picture;
+    }
+
+    public void setPicture(Serializable picture) {
+        this.picture = picture;
     }
 
 }
