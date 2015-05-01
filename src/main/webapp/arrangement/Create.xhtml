@@ -13,8 +13,6 @@
             <h:form id="ArrangementCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{arrangementController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreateArrangementLabel_arrangementid}" for="arrangementid" />
-                        <p:inputText id="arrangementid" value="#{arrangementController.selected.arrangementid}" title="#{bundle.CreateArrangementTitle_arrangementid}" required="true" requiredMessage="#{bundle.CreateArrangementRequiredMessage_arrangementid}"/>
                         <p:outputLabel value="#{bundle.CreateArrangementLabel_arrangementstartdate}" for="arrangementstartdate" />
                         <p:calendar id="arrangementstartdate" pattern="MM/dd/yyyy" value="#{arrangementController.selected.arrangementstartdate}" title="#{bundle.EditArrangementTitle_arrangementstartdate}" required="true" requiredMessage="#{bundle.EditArrangementRequiredMessage_arrangementstartdate}" showOn="button"/>
                         <p:outputLabel value="#{bundle.CreateArrangementLabel_arrangementstarttime}" for="arrangementstarttime" />
