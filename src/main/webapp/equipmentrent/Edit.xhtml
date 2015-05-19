@@ -15,13 +15,13 @@
                     <p:panelGrid columns="2" rendered="#{equipmentrentController.selected != null}">
                         <p:outputLabel value="Rent ID" for="equipmentrentid" />
                         <p:inputText id="equipmentrentid" value="#{equipmentrentController.selected.equipmentrentid}" title="#{bundle.EditEquipmentrentTitle_equipmentrentid}" required="true" requiredMessage="#{bundle.EditEquipmentrentRequiredMessage_equipmentrentid}"/>
-                        <p:outputLabel value="Rented duration in minutes" for="durationperminute" />
+                        <p:outputLabel value="Duration in minutes" for="durationperminute" />
                         <p:inputText id="durationperminute" value="#{equipmentrentController.selected.durationperminute}" title="#{bundle.EditEquipmentrentTitle_durationperminute}" />
-                        <p:outputLabel value="Rent start date" for="startdate" />
+                        <p:outputLabel value="Start date" for="startdate" />
                         <p:calendar id="startdate" pattern="MM/dd/yyyy" value="#{equipmentrentController.selected.startdate}" title="#{bundle.EditEquipmentrentTitle_startdate}"  showOn="button"/>
-                        <p:outputLabel value="Rent start time" for="starttime" />
+                        <p:outputLabel value="Start time" for="starttime" />
                         <p:calendar id="starttime" pattern="HH:mm:ss" value="#{equipmentrentController.selected.starttime}" title="#{bundle.EditEquipmentrentTitle_starttime}"  showOn="button"/>
-                        <p:outputLabel value="Rented status" for="state" />
+                        <p:outputLabel value="Status" for="state" />
                         <p:inputText id="state" value="#{equipmentrentController.selected.state}" title="#{bundle.EditEquipmentrentTitle_state}" />
                         <p:outputLabel value="Total amount of equipment" for="total" />
                         <p:inputText id="total" value="#{equipmentrentController.selected.total}" title="#{bundle.EditEquipmentrentTitle_total}" />

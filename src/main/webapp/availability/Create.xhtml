@@ -13,19 +13,19 @@
             <h:form id="AvailabilityCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{availabilityController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreateAvailabilityLabel_durationperminute}" for="durationperminute" />
+                        <p:outputLabel value="Duration in minutes" for="durationperminute" />
                         <p:inputText id="durationperminute" required="true" value="#{availabilityController.selected.durationperminute}" title="#{bundle.CreateAvailabilityTitle_durationperminute}" />
-                        <p:outputLabel value="#{bundle.CreateAvailabilityLabel_startdate}" for="startdate" />
+                        <p:outputLabel value="#Start date" for="startdate" />
                         <p:calendar id="startdate" required="true" pattern="MM/dd/yyyy" value="#{availabilityController.selected.startdate}" title="#{bundle.EditAvailabilityTitle_startdate}"  showOn="button"/>
-                        <p:outputLabel value="#{bundle.CreateAvailabilityLabel_starttime}" for="starttime" />
+                        <p:outputLabel value="Start time" for="starttime" />
                         <p:calendar id="starttime" required="true" pattern="HH:mm" value="#{availabilityController.selected.starttime}" title="#{bundle.EditAvailabilityTitle_starttime}"  showOn="button"/>
-                        <p:outputLabel value="#{bundle.CreateAvailabilityLabel_supplierid}" for="supplierid" />
+                        <p:outputLabel value="Supplier ID" for="supplierid" />
                         <p:selectOneMenu id="supplierid" required="true" value="#{availabilityController.selected.supplierid}" >
                             <f:selectItems value="#{supplierController.itemsAvailableSelectOne}"
                                            var="supplieridItem" itemLabel="#{supplieridItem.bedrijfsnaam}"
                                            itemValue="#{supplieridItem}"/>
                         </p:selectOneMenu>
-                        <p:outputLabel value="#{bundle.CreateMaterialTitle_materialtype}" for="materialid" />
+                        <p:outputLabel value="Material ID" for="materialid" />
                         <p:selectOneMenu id="materialid" required="true" value="#{availabilityController.selected.materialid}" >
                             <f:selectItems value="#{materialController.itemsAvailableSelectOne}"
                                            var="materialidItem" itemLabel="#{materialidItem.materialtype}"
