@@ -13,13 +13,13 @@
             <h:form id="ArrangementCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{arrangementController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreateArrangementLabel_arrangementstartdate}" for="arrangementstartdate" />
+                        <p:outputLabel value="Arrangement Start Date" for="arrangementstartdate" />
                         <p:calendar id="arrangementstartdate" pattern="MM/dd/yyyy" value="#{arrangementController.selected.arrangementstartdate}" title="#{bundle.EditArrangementTitle_arrangementstartdate}" required="true" requiredMessage="#{bundle.EditArrangementRequiredMessage_arrangementstartdate}" showOn="button"/>
-                        <p:outputLabel value="#{bundle.CreateArrangementLabel_arrangementstarttime}" for="arrangementstarttime" />
+                        <p:outputLabel value="Arrangement Start Time" for="arrangementstarttime" />
                         <p:calendar id="arrangementstarttime" pattern="HH:mm:ss" value="#{arrangementController.selected.arrangementstarttime}" title="#{bundle.EditArrangementTitle_arrangementstarttime}" required="true" requiredMessage="#{bundle.EditArrangementRequiredMessage_arrangementstarttime}" showOn="button"/>
-                        <p:outputLabel value="#{bundle.CreateArrangementLabel_arrangementdurationperminute}" for="arrangementdurationperminute" />
+                        <p:outputLabel value="Arrangement Duration in Minutes" for="arrangementdurationperminute" />
                         <p:inputText id="arrangementdurationperminute" value="#{arrangementController.selected.arrangementdurationperminute}" title="#{bundle.CreateArrangementTitle_arrangementdurationperminute}" required="true" requiredMessage="#{bundle.CreateArrangementRequiredMessage_arrangementdurationperminute}"/>
-                        <p:outputLabel value="#{bundle.CreateArrangementLabel_arrangementtype}" for="arrangementtype" />
+                        <p:outputLabel value="Arrangement Type" for="arrangementtype" />
                         <p:selectOneMenu id="arrangementtype" value="#{arrangementController.selected.arrangementtype}" required="true" requiredMessage="#{bundle.EditArrangementRequiredMessage_arrangementtype}">
                             <f:selectItems value="#{arrangementtypeController.itemsAvailableSelectOne}"
                                            var="arrangementtypeItem"

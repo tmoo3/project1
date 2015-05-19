@@ -13,13 +13,13 @@
             <h:form id="MonitoringEditForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{monitoringController.selected != null}">
-                        <p:outputLabel value="#{bundle.EditMonitoringLabel_monitoringstartdate}" for="monitoringstartdate" />
+                        <p:outputLabel value="Start date" for="monitoringstartdate" />
                         <p:calendar id="monitoringstartdate" pattern="MM/dd/yyyy" value="#{monitoringController.selected.monitoringstartdate}" title="#{bundle.EditMonitoringTitle_monitoringstartdate}" required="true" requiredMessage="#{bundle.EditMonitoringRequiredMessage_monitoringstartdate}" showOn="button"/>
-                        <p:outputLabel value="#{bundle.EditMonitoringLabel_monitoringstarttime}" for="monitoringstarttime" />
+                        <p:outputLabel value="Start time" for="monitoringstarttime" />
                         <p:calendar id="monitoringstarttime" pattern="HH:mm:ss" value="#{monitoringController.selected.monitoringstarttime}" title="#{bundle.EditMonitoringTitle_monitoringstarttime}" required="true" requiredMessage="#{bundle.EditMonitoringRequiredMessage_monitoringstarttime}" showOn="button"/>
-                        <p:outputLabel value="#{bundle.EditMonitoringLabel_monitoringdurationperminute}" for="monitoringdurationperminute" />
+                        <p:outputLabel value="Duration in minutes" for="monitoringdurationperminute" />
                         <p:inputText id="monitoringdurationperminute" value="#{monitoringController.selected.monitoringdurationperminute}" title="#{bundle.EditMonitoringTitle_monitoringdurationperminute}" required="true" requiredMessage="#{bundle.EditMonitoringRequiredMessage_monitoringdurationperminute}"/>
-                        <p:outputLabel value="#{bundle.EditMonitoringLabel_monitor}" for="monitor" />
+                        <p:outputLabel value="Assigned monitor" for="monitor" />
                         <p:selectOneMenu id="monitor" value="#{monitoringController.selected.monitor}" required="true" requiredMessage="#{bundle.EditMonitoringRequiredMessage_monitor}">
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
                             <f:selectItems value="#{monitorController.itemsAvailableSelectOne}"

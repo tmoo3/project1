@@ -13,11 +13,11 @@
             <h:form id="ArrangementtypeCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{arrangementtypeController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreateArrangementtypeLabel_arrangementtypeid}" for="arrangementtypeid" />
+                        <p:outputLabel value="Type ID" for="arrangementtypeid" />
                         <p:inputText id="arrangementtypeid" value="#{arrangementtypeController.selected.arrangementtypeid}" title="#{bundle.CreateArrangementtypeTitle_arrangementtypeid}" required="true" requiredMessage="#{bundle.CreateArrangementtypeRequiredMessage_arrangementtypeid}"/>
-                        <p:outputLabel value="#{bundle.CreateArrangementtypeLabel_arrangementtype}" for="arrangementtype" />
+                        <p:outputLabel value="Type" for="arrangementtype" />
                         <p:inputText id="arrangementtype" value="#{arrangementtypeController.selected.arrangementtype}" title="#{bundle.CreateArrangementtypeTitle_arrangementtype}" required="true" requiredMessage="#{bundle.CreateArrangementtypeRequiredMessage_arrangementtype}"/>
-                        <p:outputLabel value="#{bundle.CreateArrangementtypeLabel_arrangement}" for="arrangement" />
+                        <p:outputLabel value="Arrangement" for="arrangement" />
                         <p:selectOneMenu id="arrangement" value="#{arrangementtypeController.selected.arrangement}" >
                             <f:selectItems value="#{arrangementController.itemsAvailableSelectOne}"
                                            var="arrangementItem"

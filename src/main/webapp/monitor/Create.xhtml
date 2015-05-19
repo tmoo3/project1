@@ -13,11 +13,11 @@
             <h:form id="MonitorCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{monitorController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreateMonitorLabel_monitorname}" for="monitorname" />
+                        <p:outputLabel value="Full name" for="monitorname" />
                         <p:inputText id="monitorname" value="#{monitorController.selected.monitorname}" title="#{bundle.CreateMonitorTitle_monitorname}" required="true" requiredMessage="#{bundle.CreateMonitorRequiredMessage_monitorname}"/>
-                        <p:outputLabel value="#{bundle.CreateMonitorLabel_monitoremail}" for="monitoremail" />
+                        <p:outputLabel value="E-mail" for="monitoremail" />
                         <p:inputText id="monitoremail" value="#{monitorController.selected.monitoremail}" title="#{bundle.CreateMonitorTitle_monitoremail}" required="true" requiredMessage="#{bundle.CreateMonitorRequiredMessage_monitoremail}"/>
-                        <p:outputLabel value="#{bundle.CreateMonitorLabel_monitorphone}" for="monitorphone" />
+                        <p:outputLabel value="Phone number" for="monitorphone" />
                         <p:inputText id="monitorphone" value="#{monitorController.selected.monitorphone}" title="#{bundle.CreateMonitorTitle_monitorphone}" required="true" requiredMessage="#{bundle.CreateMonitorRequiredMessage_monitorphone}"/>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{monitorController.create}" value="#{bundle.Save}" update="display,:MonitorListForm:datalist,:growl" oncomplete="handleSubmit(args,'MonitorCreateDialog');"/>

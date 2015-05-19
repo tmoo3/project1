@@ -13,15 +13,15 @@
             <h:form id="SupplierCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{supplierController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreateSupplierLabel_address}" for="address" />
+                        <p:outputLabel value="Address" for="address" />
                         <p:inputText id="address" required="true" value="#{supplierController.selected.address}" title="#{bundle.CreateSupplierTitle_address}" />
-                        <p:outputLabel value="#{bundle.CreateSupplierLabel_bedrijfsnaam}" for="bedrijfsnaam" />
+                        <p:outputLabel value="Company name" for="bedrijfsnaam" />
                         <p:inputText id="bedrijfsnaam" required="true" value="#{supplierController.selected.bedrijfsnaam}" title="#{bundle.CreateSupplierTitle_bedrijfsnaam}" />
-                        <p:outputLabel value="#{bundle.CreateSupplierLabel_contactpersoon}" for="contactpersoon" />
+                        <p:outputLabel value="Contact person" for="contactpersoon" />
                         <p:inputText id="contactpersoon" required="true" value="#{supplierController.selected.contactpersoon}" title="#{bundle.CreateSupplierTitle_contactpersoon}" />
-                        <p:outputLabel value="#{bundle.CreateSupplierLabel_phone}" for="phone" />
+                        <p:outputLabel value="Company phone" for="phone" />
                         <p:inputText id="phone" required="true" value="#{supplierController.selected.phone}" title="#{bundle.CreateSupplierTitle_phone}" />
-                        <p:outputLabel value="#{bundle.CreateSupplierLabel_zip}" for="zip" />
+                        <p:outputLabel value="ZIP code" for="zip" />
                         <p:inputText id="zip" required="true" value="#{supplierController.selected.zip}" title="#{bundle.CreateSupplierTitle_zip}" />
                     </p:panelGrid>
                     <p:commandButton actionListener="#{supplierController.create}" value="#{bundle.Save}" update="display,:SupplierListForm:datalist,:growl" oncomplete="handleSubmit(args,'SupplierCreateDialog');"/>

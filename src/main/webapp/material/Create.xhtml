@@ -13,17 +13,17 @@
             <h:form id="MaterialCreateForm" enctype="multipart/form-data">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{materialController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreateMaterialLabel_mass}" for="mass" />
+                        <p:outputLabel value="Weight in kg" for="mass" />
                         <p:inputText id="mass" value="#{materialController.selected.mass}" title="#{bundle.CreateMaterialTitle_mass}" />
-                        <p:outputLabel value="#{bundle.CreateMaterialLabel_materialquality}" for="materialquality" />
+                        <p:outputLabel value="Quality" for="materialquality" />
                         <p:inputText id="materialquality" value="#{materialController.selected.materialquality}" title="#{bundle.CreateMaterialTitle_materialquality}" />
-                        <p:outputLabel value="#{bundle.CreateMaterialLabel_materialquantity}" for="materialquantity" />
+                        <p:outputLabel value="Quantity" for="materialquantity" />
                         <p:inputText id="materialquantity" value="#{materialController.selected.materialquantity}" title="#{bundle.CreateMaterialTitle_materialquantity}" />
-                        <p:outputLabel value="#{bundle.CreateMaterialLabel_materialtype}" for="materialtype" />
+                        <p:outputLabel value="Type" for="materialtype" />
                         <p:inputText id="materialtype" value="#{materialController.selected.materialtype}" title="#{bundle.CreateMaterialTitle_materialtype}" />
-                        <p:outputLabel value="#{bundle.CreateMaterialLabel_rentprice}" for="rentprice" />
+                        <p:outputLabel value="Price" for="rentprice" />
                         <p:inputText id="rentprice" value="#{materialController.selected.rentprice}" title="#{bundle.CreateMaterialTitle_rentprice}" />
-                        <p:outputLabel value="#{bundle.CreateMaterialLabel_picture}" for="picture" />
+                        <p:outputLabel value="Image" for="picture" />
                         <p:fileUpload value="#{materialController.selected.picture}" id="picture" fileUploadListener="#{sysManager.handleFileUpload}" mode="advanced" dragDropSupport="false" sizeLimit="100000" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
                     </p:panelGrid>
                     <p:commandButton actionListener="#{materialController.create}" value="#{bundle.Save}" update="display,:MaterialListForm:datalist,:growl" oncomplete="handleSubmit(args,'MaterialCreateDialog');"/>

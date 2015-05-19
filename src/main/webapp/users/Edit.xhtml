@@ -14,9 +14,9 @@
                 <h:panelGroup id="display">
                     <h:inputHidden id="userid" value="#{usersController.selected.userid}"/>                    
                     <p:panelGrid columns="2" rendered="#{usersController.selected != null}">
-                        <p:outputLabel value="#{bundle.EditUsersLabel_username}" for="username" />
+                        <p:outputLabel value="Username" for="username" />
                         <p:inputText id="username" required="true" value="#{usersController.selected.username}" title="#{bundle.EditUsersTitle_username}" />
-                        <p:outputLabel value="#{bundle.EditUsersLabel_userpassword}" for="userpassword" />
+                        <p:outputLabel value="Password" for="userpassword" />
                         <p:inputText id="userpassword" required="true" value="#{usersController.selected.userpassword}" title="#{bundle.EditUsersTitle_userpassword}" />
                     </p:panelGrid>
                     <p:commandButton actionListener="#{usersController.update}" value="#{bundle.Save}" update="display,:UsersListForm:datalist,:growl" oncomplete="handleSubmit(args, 'UsersEditDialog');"/>

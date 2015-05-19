@@ -32,19 +32,19 @@
 
                         <p:column sortBy="#{item.userid}" filterBy="#{item.userid}">
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListUsersTitle_userid}"/>
+                                <h:outputText value="User ID"/>
                             </f:facet>
                             <h:outputText value="#{item.userid}"/>
                         </p:column>
                         <p:column sortBy="#{item.username}" filterBy="#{item.username}">
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListUsersTitle_username}"/>
+                                <h:outputText value="Username"/>
                             </f:facet>
                             <h:outputText value="#{item.username}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListUsersTitle_userpassword}"/>
+                                <h:outputText value="Password"/>
                             </f:facet>
                             <h:outputText value="#{item.userpassword}"/>
                         </p:column>

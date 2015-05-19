@@ -14,13 +14,13 @@
                 <h:panelGroup id="display">
                     <h:inputHidden id="userid" value="#{warehouseController.selected.warehouseid}"/>  
                     <p:panelGrid columns="2" rendered="#{warehouseController.selected != null}">
-                        <p:outputLabel value="#{bundle.EditWarehouseLabel_address}" for="address" />
+                        <p:outputLabel value="Address" for="address" />
                         <p:inputText id="address" required="true" value="#{warehouseController.selected.address}" title="#{bundle.EditWarehouseTitle_address}" />
-                        <p:outputLabel value="#{bundle.EditWarehouseLabel_phone}" for="phone" />
+                        <p:outputLabel value="Phone number" for="phone" />
                         <p:inputText id="phone" required="true" value="#{warehouseController.selected.phone}" title="#{bundle.EditWarehouseTitle_phone}" />
-                        <p:outputLabel value="#{bundle.EditWarehouseLabel_volume}" for="volume" />
+                        <p:outputLabel value="Storage capacity in m^3" for="volume" />
                         <p:inputText id="volume" required="true" value="#{warehouseController.selected.volume}" title="#{bundle.EditWarehouseTitle_volume}" />
-                        <p:outputLabel value="#{bundle.EditWarehouseLabel_zip}" for="zip" />
+                        <p:outputLabel value="ZIP code" for="zip" />
                         <p:inputText id="zip" required="true" value="#{warehouseController.selected.zip}" title="#{bundle.EditWarehouseTitle_zip}" />
                     </p:panelGrid>
                     <p:commandButton actionListener="#{warehouseController.update}" value="#{bundle.Save}" update="display,:WarehouseListForm:datalist,:growl" oncomplete="handleSubmit(args, 'WarehouseEditDialog');"/>
