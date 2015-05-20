@@ -22,7 +22,7 @@
                         <p:outputLabel value="#{bundle.CreateArrangementLabel_arrangementtype}" for="arrangementtype" />
                         <p:selectOneMenu id="arrangementtype" value="#{arrangementController.selected.arrangementtype}" required="true" requiredMessage="#{bundle.EditArrangementRequiredMessage_arrangementtype}">
                             <f:selectItems value="#{arrangementtypeController.itemsAvailableSelectOne}"
-                                           var="arrangementtypeItem" itemLabel="#{arrangementtypeItem.arrangementtypeid}"
+                                           var="arrangementtypeItem" itemLabel="#{arrangementtypeItem.arrangementtype}"
                                            itemValue="#{arrangementtypeItem}"/>
                         </p:selectOneMenu>
                     </p:panelGrid>

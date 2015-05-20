@@ -25,7 +25,7 @@
                         <p:selectOneMenu id="arrangementtype" value="#{arrangementController.selected.arrangementtype}" required="true" requiredMessage="#{bundle.EditArrangementRequiredMessage_arrangementtype}">
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
                             <f:selectItems value="#{arrangementtypeController.itemsAvailableSelectOne}"
-                                           var="arrangementtypeItem"
+                                           var="arrangementtypeItem" itemLabel="#{arrangementtypeItem.arrangementtype}"
                                            itemValue="#{arrangementtypeItem}"/>
                         </p:selectOneMenu>
                     </p:panelGrid>

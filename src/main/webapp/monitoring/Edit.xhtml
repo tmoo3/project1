@@ -23,14 +23,14 @@
                         <p:selectOneMenu id="monitor" value="#{monitoringController.selected.monitor}" required="true" requiredMessage="#{bundle.EditMonitoringRequiredMessage_monitor}">
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
                             <f:selectItems value="#{monitorController.itemsAvailableSelectOne}"
-                                           var="monitorItem"
+                                           var="monitorItem" itemLabel="#{monitorItem.monitorname}"
                                            itemValue="#{monitorItem}"/>
                         </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.EditMonitoringLabel_arrangement}" for="arrangement" />
                         <p:selectOneMenu id="arrangement" value="#{monitoringController.selected.arrangement}" required="true" requiredMessage="#{bundle.EditMonitoringRequiredMessage_arrangement}">
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
                             <f:selectItems value="#{arrangementController.itemsAvailableSelectOne}"
-                                           var="arrangementItem"
+                                           var="arrangementItem" itemLabel="#{arrangementItem.arrangementid}"
                                            itemValue="#{arrangementItem}"/>
                         </p:selectOneMenu>
                     </p:panelGrid>
