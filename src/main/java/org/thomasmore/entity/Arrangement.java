@@ -122,7 +122,7 @@ public class Arrangement implements Serializable {
     public Arrangementtype getArrangementtype() {
         return arrangementtype;
     }
-    
+
     public void setArrangementtype(Arrangementtype arrangementtype) {
         this.arrangementtype = arrangementtype;
     }

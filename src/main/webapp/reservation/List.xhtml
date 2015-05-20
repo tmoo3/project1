@@ -39,19 +39,19 @@
                     <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="Reservation ID"/>
+                            <h:outputText value="#{bundle.ListReservationTitle_reservationid}"/>
                         </f:facet>
                         <h:outputText value="#{item.reservationid}"/>
                     </p:column>
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="Duration in minutes"/>
+                            <h:outputText value="#{bundle.ListReservationTitle_durationperminute}"/>
                         </f:facet>
                         <h:outputText value="#{item.durationperminute}"/>
                     </p:column>
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="Start date"/>
+                            <h:outputText value="#{bundle.ListReservationTitle_startdate}"/>
                         </f:facet>
                         <h:outputText value="#{item.startdate}">
                             <f:convertDateTime pattern="MM/dd/yyyy" />
@@ -59,7 +59,7 @@
                     </p:column>
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="Start time"/>
+                            <h:outputText value="#{bundle.ListReservationTitle_starttime}"/>
                         </f:facet>
                         <h:outputText value="#{item.starttime}">
                             <f:convertDateTime pattern="HH:mm:ss" />
@@ -67,19 +67,19 @@
                     </p:column>
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="Amount reserved"/>
+                            <h:outputText value="#{bundle.ListReservationTitle_total}"/>
                         </f:facet>
                         <h:outputText value="#{item.total}"/>
                     </p:column>
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="Client ID"/>
+                            <h:outputText value="#{bundle.ListReservationTitle_clientid}"/>
                         </f:facet>
                         <h:outputText value="#{item.clientid}"/>
                     </p:column>
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="Client last name"/>
+                            <h:outputText value="#{bundle.EditClientTitle_lastname}"/>
                         </f:facet>
                         <h:outputText value="#{clientController.getClient(item.clientid.clientid).lastname}"/>
                     </p:column>

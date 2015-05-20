@@ -13,15 +13,15 @@
             <h:form id="SupplierMaterialCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{supplierMaterialController.selected != null}">
-                        <p:outputLabel value="Our experience" for="experiencenote" />
+                        <p:outputLabel value="#{bundle.CreateSupplierMaterialLabel_experiencenote}" for="experiencenote" />
                         <p:inputText id="experiencenote" required="true" value="#{supplierMaterialController.selected.experiencenote}" title="#{bundle.CreateSupplierMaterialTitle_experiencenote}" />
-                        <p:outputLabel value="Supplying company" for="supplier" />
+                        <p:outputLabel value="#{bundle.CreateSupplierMaterialLabel_supplier}" for="supplier" />
                         <p:selectOneMenu id="supplier" required="true" value="#{supplierMaterialController.selected.supplier}" requiredMessage="#{bundle.EditSupplierMaterialRequiredMessage_supplier}">
                             <f:selectItems value="#{supplierController.itemsAvailableSelectOne}"
                                            var="supplierItem" itemLabel="#{supplierItem.bedrijfsnaam}"
                                            itemValue="#{supplierItem}"/>
                         </p:selectOneMenu>
-                        <p:outputLabel value="Material" for="material" />
+                        <p:outputLabel value="#{bundle.CreateSupplierMaterialLabel_material}" for="material" />
                         <p:selectOneMenu id="material" required="true" value="#{supplierMaterialController.selected.material}" requiredMessage="#{bundle.EditSupplierMaterialRequiredMessage_material}">
                             <f:selectItems value="#{materialController.itemsAvailableSelectOne}"
                                            var="materialItem" itemLabel="#{materialItem.materialtype}"

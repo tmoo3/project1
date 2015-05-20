@@ -29,7 +29,7 @@
 
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="Start date"/>
+                                <h:outputText value="#{bundle.ListMonitoringTitle_monitoringstartdate}"/>
                             </f:facet>
                             <h:outputText value="#{item.monitoringstartdate}">
                                 <f:convertDateTime pattern="MM/dd/yyyy" />
@@ -37,7 +37,7 @@
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="Start time"/>
+                                <h:outputText value="#{bundle.ListMonitoringTitle_monitoringstarttime}"/>
                             </f:facet>
                             <h:outputText value="#{item.monitoringstarttime}">
                                 <f:convertDateTime pattern="HH:mm:ss" />
@@ -45,19 +45,19 @@
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="Duration in minutes"/>
+                                <h:outputText value="#{bundle.ListMonitoringTitle_monitoringdurationperminute}"/>
                             </f:facet>
                             <h:outputText value="#{item.monitoringdurationperminute}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="Assigned monitor"/>
+                                <h:outputText value="#{bundle.ListMonitoringTitle_monitor}"/>
                             </f:facet>
                             <h:outputText value="#{item.monitor}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="Arrangement"/>
+                                <h:outputText value="#{bundle.ListMonitoringTitle_arrangement}"/>
                             </f:facet>
                             <h:outputText value="#{item.arrangement}"/>
                         </p:column>

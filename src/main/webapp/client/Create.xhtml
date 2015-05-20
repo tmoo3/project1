@@ -13,15 +13,15 @@
             <h:form id="ClientCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{clientController.selected != null}">
-                        <p:outputLabel value="First Name" for="firstname" />
+                        <p:outputLabel value="#{bundle.CreateClientLabel_firstname}" for="firstname" />
                         <p:inputText id="firstname" required="true" value="#{clientController.selected.firstname}" title="#{bundle.CreateClientTitle_firstname}" />
-                        <p:outputLabel value="Last Name" for="lastname" />
+                        <p:outputLabel value="#{bundle.CreateClientLabel_lastname}" for="lastname" />
                         <p:inputText id="lastname" required="true" value="#{clientController.selected.lastname}" title="#{bundle.CreateClientTitle_lastname}" />
-                        <p:outputLabel value="Mobile number" for="mobile" />
+                        <p:outputLabel value="#{bundle.CreateClientLabel_mobile}" for="mobile" />
                         <p:inputText id="mobile" required="true" value="#{clientController.selected.mobile}" title="#{bundle.CreateClientTitle_mobile}" />
-                        <p:outputLabel value="Address" for="address" />
+                        <p:outputLabel value="#{bundle.CreateClientLabel_address}" for="address" />
                         <p:inputText id="address" required="true" value="#{clientController.selected.address}" title="#{bundle.CreateClientTitle_address}" />                        
-                        <p:outputLabel value="ZIP code" for="zip" />
+                        <p:outputLabel value="#{bundle.CreateClientLabel_zip}" for="zip" />
                         <p:inputText id="zip" required="true" value="#{clientController.selected.zip}" title="#{bundle.CreateClientTitle_zip}" />
                     </p:panelGrid>
                     <p:commandButton actionListener="#{clientController.create}" value="#{bundle.Save}" update="display,:ClientListForm:datalist,:growl" oncomplete="handleSubmit(args,'ClientCreateDialog');"/>

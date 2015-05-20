@@ -14,15 +14,15 @@
                 <h:panelGroup id="display">
                     <h:inputHidden id="supplierid" value="#{supplierController.selected.supplierid}"/>
                     <p:panelGrid columns="2" rendered="#{supplierController.selected != null}">
-                        <p:outputLabel value="Address" for="address" />
+                        <p:outputLabel value="#{bundle.EditSupplierLabel_address}" for="address" />
                         <p:inputText id="address" required="true" value="#{supplierController.selected.address}" title="#{bundle.EditSupplierTitle_address}" />
-                        <p:outputLabel value="Company name" for="bedrijfsnaam" />
+                        <p:outputLabel value="#{bundle.EditSupplierLabel_bedrijfsnaam}" for="bedrijfsnaam" />
                         <p:inputText id="bedrijfsnaam" required="true" value="#{supplierController.selected.bedrijfsnaam}" title="#{bundle.EditSupplierTitle_bedrijfsnaam}" />
-                        <p:outputLabel value="Contact person" for="contactpersoon" />
+                        <p:outputLabel value="#{bundle.EditSupplierLabel_contactpersoon}" for="contactpersoon" />
                         <p:inputText id="contactpersoon" required="true" value="#{supplierController.selected.contactpersoon}" title="#{bundle.EditSupplierTitle_contactpersoon}" />
-                        <p:outputLabel value="Company phone" for="phone" />
+                        <p:outputLabel value="#{bundle.EditSupplierLabel_phone}" for="phone" />
                         <p:inputText id="phone" required="true" value="#{supplierController.selected.phone}" title="#{bundle.EditSupplierTitle_phone}" />
-                        <p:outputLabel value="ZIP code" for="zip" />
+                        <p:outputLabel value="#{bundle.EditSupplierLabel_zip}" for="zip" />
                         <p:inputText id="zip" required="true" value="#{supplierController.selected.zip}" title="#{bundle.EditSupplierTitle_zip}" />
                     </p:panelGrid>
                     <p:commandButton actionListener="#{supplierController.update}" value="#{bundle.Save}" update="display,:SupplierListForm:datalist,:growl" oncomplete="handleSubmit(args, 'SupplierEditDialog');"/>

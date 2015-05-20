@@ -13,13 +13,13 @@
             <h:form id="MonitorEditForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{monitorController.selected != null}">
-                        <p:outputLabel value="Monitor ID" for="monitorid" />
+                        <p:outputLabel value="#{bundle.EditMonitorLabel_monitorid}" for="monitorid" />
                         <p:inputText id="monitorid" value="#{monitorController.selected.monitorid}" title="#{bundle.EditMonitorTitle_monitorid}" required="true" requiredMessage="#{bundle.EditMonitorRequiredMessage_monitorid}"/>
-                        <p:outputLabel value="Full name" for="monitorname" />
+                        <p:outputLabel value="#{bundle.EditMonitorLabel_monitorname}" for="monitorname" />
                         <p:inputText id="monitorname" value="#{monitorController.selected.monitorname}" title="#{bundle.EditMonitorTitle_monitorname}" required="true" requiredMessage="#{bundle.EditMonitorRequiredMessage_monitorname}"/>
-                        <p:outputLabel value="E-mail" for="monitoremail" />
+                        <p:outputLabel value="#{bundle.EditMonitorLabel_monitoremail}" for="monitoremail" />
                         <p:inputText id="monitoremail" value="#{monitorController.selected.monitoremail}" title="#{bundle.EditMonitorTitle_monitoremail}" required="true" requiredMessage="#{bundle.EditMonitorRequiredMessage_monitoremail}"/>
-                        <p:outputLabel value="Phone number" for="monitorphone" />
+                        <p:outputLabel value="#{bundle.EditMonitorLabel_monitorphone}" for="monitorphone" />
                         <p:inputText id="monitorphone" value="#{monitorController.selected.monitorphone}" title="#{bundle.EditMonitorTitle_monitorphone}" required="true" requiredMessage="#{bundle.EditMonitorRequiredMessage_monitorphone}"/>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{monitorController.update}" value="#{bundle.Save}" update="display,:MonitorListForm:datalist,:growl" oncomplete="handleSubmit(args, 'MonitorEditDialog');"/>

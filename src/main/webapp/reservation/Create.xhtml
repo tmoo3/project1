@@ -19,15 +19,15 @@
             <h:form id="ReservationCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{reservationController.selected != null}">
-                        <p:outputLabel value="Duration in minutes" for="durationperminute" />
+                        <p:outputLabel value="#{bundle.CreateReservationLabel_durationperminute}" for="durationperminute" />
                         <p:inputText id="durationperminute" required="true" value="#{reservationController.selected.durationperminute}" title="#{bundle.CreateReservationTitle_durationperminute}" />
-                        <p:outputLabel value="Start date" for="startdate" />
+                        <p:outputLabel value="#{bundle.CreateReservationLabel_startdate}" for="startdate" />
                         <p:calendar id="startdate" required="true" pattern="MM/dd/yyyy" value="#{reservationController.selected.startdate}" title="#{bundle.EditReservationTitle_startdate}"  showOn="button"/>
-                        <p:outputLabel value="Start time" for="starttime" />
+                        <p:outputLabel value="#{bundle.CreateReservationLabel_starttime}" for="starttime" />
                         <p:calendar id="starttime" required="true" pattern="HH:mm" value="#{reservationController.selected.starttime}" title="#{bundle.EditReservationTitle_starttime}"  showOn="button"/>
-                        <p:outputLabel value="Amount reserved" for="total" />
+                        <p:outputLabel value="#{bundle.CreateReservationLabel_total}" for="total" />
                         <p:inputText id="total" required="true" value="#{reservationController.selected.total}" title="#{bundle.CreateReservationTitle_total}" />
-                        <p:outputLabel value="Client ID" for="clientid" />
+                        <p:outputLabel value="#{bundle.CreateReservationLabel_clientid}" for="clientid" />
 
                         <p:selectOneMenu id="clientid" value="#{reservationController.selected.clientid}" required="true" filter="true" filterMatchMode="startsWith">
                             <f:selectItems value="#{clientController.itemsAvailableSelectOne}"

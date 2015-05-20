@@ -13,17 +13,17 @@
             <h:form id="EquipmentrentCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{equipmentrentController.selected != null}">
-                        <p:outputLabel value="Rent duration in minutes" for="durationperminute" />
+                        <p:outputLabel value="#{bundle.CreateEquipmentrentLabel_durationperminute}" for="durationperminute" />
                         <p:inputText id="durationperminute" required="true" value="#{equipmentrentController.selected.durationperminute}" title="#{bundle.CreateEquipmentrentTitle_durationperminute}" />
-                        <p:outputLabel value="Rent start date" for="startdate" />
+                        <p:outputLabel value="#{bundle.CreateEquipmentrentLabel_startdate}" for="startdate" />
                         <p:calendar id="startdate" required="true" pattern="MM/dd/yyyy" value="#{equipmentrentController.selected.startdate}" title="#{bundle.EditEquipmentrentTitle_startdate}"  showOn="button"/>
-                        <p:outputLabel value="Rent start time" for="starttime" />
+                        <p:outputLabel value="#{bundle.CreateEquipmentrentLabel_starttime}" for="starttime" />
                         <p:calendar id="starttime" required="true" pattern="HH:mm" value="#{equipmentrentController.selected.starttime}" title="#{bundle.EditEquipmentrentTitle_starttime}"  showOn="button"/>
-                        <p:outputLabel value="Rented status" for="state" />
+                        <p:outputLabel value="#{bundle.CreateEquipmentrentLabel_state}" for="state" />
                         <p:inputText id="state" required="true" value="#{equipmentrentController.selected.state}" title="#{bundle.CreateEquipmentrentTitle_state}" />
-                        <p:outputLabel value="Total amount of equipment" for="total" />
+                        <p:outputLabel value="#{bundle.CreateEquipmentrentLabel_total}" for="total" />
                         <p:inputText id="total" required="true" value="#{equipmentrentController.selected.total}" title="#{bundle.CreateEquipmentrentTitle_total}" />
-                        <p:outputLabel value="Reservation ID" for="reservationid" />
+                        <p:outputLabel value="#{bundle.CreateEquipmentrentLabel_reservationid}" for="reservationid" />
                         <p:selectOneMenu id="reservationid" value="#{equipmentrentController.selected.reservationid}" filter="true" filterMatchMode="startsWith">
                             <f:selectItems value="#{reservationController.itemsAvailableSelectMany}"
                                            var="reservationidItem"  itemLabel="#{reservationidItem.clientid.lastname}"

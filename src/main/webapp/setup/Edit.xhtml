@@ -14,7 +14,7 @@
                 <h:panelGroup id="display">
                     <h:inputHidden id="availabilityid" value="#{setupController.selected.setupid}"/>
                     <p:panelGrid columns="2" rendered="#{setupController.selected != null}">
-                        <p:outputLabel value="Message of the day" for="communication" />
+                        <p:outputLabel value="#{bundle.EditSetupLabel_communication}" for="communication" />
                         <p:inputTextarea id="communication" value="#{setupController.selected.communication}" title="#{bundle.EditSetupTitle_communication}" />
                     </p:panelGrid>
                     <p:commandButton actionListener="#{setupController.update}" value="#{bundle.Save}" update="display,:SetupListForm:datalist,:growl" oncomplete="handleSubmit(args, 'SetupEditDialog');"/>

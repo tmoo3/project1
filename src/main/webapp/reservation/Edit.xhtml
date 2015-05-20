@@ -14,15 +14,15 @@
                 <h:panelGroup id="display">
                     <h:inputHidden id="reservationid" value="#{reservationController.selected.reservationid}"/>
                     <p:panelGrid columns="2" rendered="#{reservationController.selected != null}">
-                        <p:outputLabel value="Duration in minutes" for="durationperminute" />
+                        <p:outputLabel value="#{bundle.EditReservationLabel_durationperminute}" for="durationperminute" />
                         <p:inputText id="durationperminute" value="#{reservationController.selected.durationperminute}" title="#{bundle.EditReservationTitle_durationperminute}" />
-                        <p:outputLabel value="Start date" for="startdate" />
+                        <p:outputLabel value="#{bundle.EditReservationLabel_startdate}" for="startdate" />
                         <p:calendar id="startdate" pattern="MM/dd/yyyy" value="#{reservationController.selected.startdate}" title="#{bundle.EditReservationTitle_startdate}"  showOn="button"/>
-                        <p:outputLabel value="Start time" for="starttime" />
+                        <p:outputLabel value="#{bundle.EditReservationLabel_starttime}" for="starttime" />
                         <p:calendar id="starttime" pattern="HH:mm:ss" value="#{reservationController.selected.starttime}" title="#{bundle.EditReservationTitle_starttime}"  showOn="button"/>
-                        <p:outputLabel value="Amount reserved" for="total" />
+                        <p:outputLabel value="#{bundle.EditReservationLabel_total}" for="total" />
                         <p:inputText id="total" value="#{reservationController.selected.total}" title="#{bundle.EditReservationTitle_total}" />
-                        <p:outputLabel value="Client ID" for="clientid" />
+                        <p:outputLabel value="#{bundle.EditReservationLabel_clientid}" for="clientid" />
                         <p:selectOneMenu id="clientid" value="#{reservationController.selected.clientid}" >
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
                             <f:selectItems value="#{clientController.itemsAvailableSelectOne}"
