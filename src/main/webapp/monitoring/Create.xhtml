@@ -22,7 +22,7 @@
                         <p:outputLabel value="#{bundle.CreateMonitoringLabel_monitor}" for="monitor" />
                         <p:selectOneMenu id="monitor" value="#{monitoringController.selected.monitor}" required="true" requiredMessage="#{bundle.EditMonitoringRequiredMessage_monitor}">
                             <f:selectItems value="#{monitorController.itemsAvailableSelectOne}"
-                                           var="monitorItem"
+                                           var="monitorItem" itemLabel="#{monitorItem.monitorname}"
                                            itemValue="#{monitorItem}"/>
                         </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.CreateMonitoringLabel_arrangement}" for="arrangement" />
