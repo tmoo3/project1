@@ -12,9 +12,7 @@
         <p:dialog id="ArrangementtypeCreateDlg" widgetVar="ArrangementtypeCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateArrangementtypeTitle}">
             <h:form id="ArrangementtypeCreateForm">
                 <h:panelGroup id="display">
-                    <p:panelGrid columns="2" rendered="#{arrangementtypeController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreateArrangementtypeLabel_arrangementtypeid}" for="arrangementtypeid" />
-                        <p:inputText id="arrangementtypeid" value="#{arrangementtypeController.selected.arrangementtypeid}" title="#{bundle.CreateArrangementtypeTitle_arrangementtypeid}" required="true" requiredMessage="#{bundle.CreateArrangementtypeRequiredMessage_arrangementtypeid}"/>
+                    <p:panelGrid columns="2" rendered="#{arrangementtypeController.selected != null}">                        
                         <p:outputLabel value="#{bundle.CreateArrangementtypeLabel_arrangementtype}" for="arrangementtype" />
                         <p:inputText id="arrangementtype" value="#{arrangementtypeController.selected.arrangementtype}" title="#{bundle.CreateArrangementtypeTitle_arrangementtype}" required="true" requiredMessage="#{bundle.CreateArrangementtypeRequiredMessage_arrangementtype}"/>
                         <p:outputLabel value="#{bundle.CreateArrangementtypeLabel_arrangement}" for="arrangement" />

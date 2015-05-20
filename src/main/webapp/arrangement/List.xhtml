@@ -68,7 +68,25 @@
                             <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{arrangementController.destroy}" update=":growl,datalist" disabled="#{empty arrangementController.selected}"/>
                         </f:facet>
                     </p:dataTable>
+                    <h:commandLink>
+                        <p:graphicImage name="img/excel.png" />
+                        <p:dataExporter type="xls" target="datalist" fileName="#{bundle.ListArrangementTitle}" pageOnly="true"/>
+                    </h:commandLink>
 
+                    <h:commandLink>
+                        <p:graphicImage name="img/pdf.png" />
+                        <p:dataExporter type="pdf" target="datalist" fileName="#{bundle.ListArrangementTitle}" pageOnly="true" />
+                    </h:commandLink>
+
+                    <h:commandLink>
+                        <p:graphicImage name="img/csv.png" />
+                        <p:dataExporter type="csv" target="datalist" fileName="#{bundle.ListArrangementTitle}" pageOnly="true" />
+                    </h:commandLink>
+
+                    <h:commandLink>
+                        <p:graphicImage name="img/xml.png" />
+                        <p:dataExporter type="xml" target="datalist" fileName="#{bundle.ListArrangementTitle}" pageOnly="true" />
+                    </h:commandLink>
             </h:form>
 
             <ui:include src="Create.xhtml"/>
