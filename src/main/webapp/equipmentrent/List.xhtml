@@ -35,13 +35,13 @@
                     </p:column>
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="Duration in minutes"/>
+                            <h:outputText value="Rented duration in minutes"/>
                         </f:facet>
                         <h:outputText value="#{item.durationperminute}"/>
                     </p:column>
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="Start date"/>
+                            <h:outputText value="Rent start date"/>
                         </f:facet>
                         <h:outputText value="#{item.startdate}">
                             <f:convertDateTime pattern="MM/dd/yyyy" />
@@ -49,7 +49,7 @@
                     </p:column>
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="Start time"/>
+                            <h:outputText value="Rent start time"/>
                         </f:facet>
                         <h:outputText value="#{item.starttime}">
                             <f:convertDateTime pattern="HH:mm:ss" />
@@ -57,7 +57,7 @@
                     </p:column>
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="Status"/>
+                            <h:outputText value="Rented status"/>
                         </f:facet>
                         <h:outputText value="#{item.state}"/>
                     </p:column>

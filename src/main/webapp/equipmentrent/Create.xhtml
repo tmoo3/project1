@@ -13,13 +13,13 @@
             <h:form id="EquipmentrentCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{equipmentrentController.selected != null}">
-                        <p:outputLabel value="Duration in minutes" for="durationperminute" />
+                        <p:outputLabel value="Rent duration in minutes" for="durationperminute" />
                         <p:inputText id="durationperminute" required="true" value="#{equipmentrentController.selected.durationperminute}" title="#{bundle.CreateEquipmentrentTitle_durationperminute}" />
-                        <p:outputLabel value="Start date" for="startdate" />
+                        <p:outputLabel value="Rent start date" for="startdate" />
                         <p:calendar id="startdate" required="true" pattern="MM/dd/yyyy" value="#{equipmentrentController.selected.startdate}" title="#{bundle.EditEquipmentrentTitle_startdate}"  showOn="button"/>
-                        <p:outputLabel value="Start time" for="starttime" />
+                        <p:outputLabel value="Rent start time" for="starttime" />
                         <p:calendar id="starttime" required="true" pattern="HH:mm" value="#{equipmentrentController.selected.starttime}" title="#{bundle.EditEquipmentrentTitle_starttime}"  showOn="button"/>
-                        <p:outputLabel value="Status" for="state" />
+                        <p:outputLabel value="Rented status" for="state" />
                         <p:inputText id="state" required="true" value="#{equipmentrentController.selected.state}" title="#{bundle.CreateEquipmentrentTitle_state}" />
                         <p:outputLabel value="Total amount of equipment" for="total" />
                         <p:inputText id="total" required="true" value="#{equipmentrentController.selected.total}" title="#{bundle.CreateEquipmentrentTitle_total}" />
